@@ -1,101 +1,215 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LAVANA (लवण) — Student Atlas of Indian Salt Pans</title>
-  <meta name="description" content="An independent student project mapping Indian salt pans with public coordinates, satellite 3D of actual sites, crystallization science, and a humanitarian welfare blueprint for salt workers. Data compiled from published sources and cited throughout.">
-  <meta name="keywords" content="salt pans india, agariya workers, little rann of kutch, sambhar lake, thoothukudi salt, student humanitarian project, solar evaporation">
-  <meta name="author" content="LAVANA student team">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LAVANA (लवण) — Student Atlas of Indian Salt Pans</title>
+    <meta
+      name="description"
+      content="An independent student project mapping Indian salt pans with public coordinates, satellite 3D of actual sites, crystallization science, and a humanitarian welfare blueprint for salt workers. Data compiled from published sources and cited throughout."
+    />
+    <meta
+      name="keywords"
+      content="salt pans india, agariya workers, little rann of kutch, sambhar lake, thoothukudi salt, student humanitarian project, solar evaporation"
+    />
+    <meta name="author" content="LAVANA student team" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="LAVANA (लवण) — Student Atlas of Indian Salt Pans">
-  <meta property="og:description" content="Independent student atlas of Indian salt pans: public GIS data with citations, real satellite 3D of each site, and a humanitarian blueprint for salt workers.">
-  <meta property="og:type" content="website">
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="LAVANA (लवण) — Student Atlas of Indian Salt Pans"
+    />
+    <meta
+      property="og:description"
+      content="Independent student atlas of Indian salt pans: public GIS data with citations, real satellite 3D of each site, and a humanitarian blueprint for salt workers."
+    />
+    <meta property="og:type" content="website" />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"
+    />
 
-  <!-- Master Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <!-- Master Stylesheet -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- Top Announcement Bar -->
-  <div class="top-ticker" id="top-ticker">
-    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-      <div class="ticker-item">
-        <span class="ticker-badge">STUDENT PROJECT</span>
-        <span>Independent humanitarian atlas of India's salt pans — not a government website</span>
+    <!-- Top Announcement Bar -->
+    <div class="top-ticker" id="top-ticker">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+        "
+      >
+        <div class="ticker-item">
+          <span class="ticker-badge">STUDENT PROJECT</span>
+          <span
+            >Independent humanitarian atlas of India's salt pans — not a
+            government website</span
+          >
+        </div>
+        <div class="ticker-item" style="display: flex; gap: 1.5rem">
+          <span
+            ><strong>26.6 Million Tonnes</strong> India yield (IBM / published
+            stats)</span
+          >
+          <span
+            ><strong>100,000+</strong> Salt workers we hope this work can
+            support</span
+          >
+        </div>
       </div>
-      <div class="ticker-item" style="display: flex; gap: 1.5rem;">
-        <span><strong>26.6 Million Tonnes</strong> India yield (IBM / published stats)</span>
-        <span><strong>100,000+</strong> Salt workers we hope this work can support</span>
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar" id="navbar" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="#hero" class="brand" id="brand-logo">
+          <div class="brand-icon"><span>L</span></div>
+          <div>
+            <div class="brand-title">LAVANA <span>(लवण)</span></div>
+            <span class="brand-tag">Student-led humanitarian atlas</span>
+          </div>
+        </a>
+
+        <button
+          class="menu-toggle"
+          id="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="primary-navigation"
+        >
+          <span>Menu</span><i data-lucide="menu"></i>
+        </button>
+        <ul class="nav-links" id="primary-navigation">
+          <li>
+            <a href="#map-explorer" class="nav-link"
+              ><i data-lucide="map"></i> Map</a
+            >
+          </li>
+          <li>
+            <a href="#crystallizer-3d" class="nav-link"
+              ><i data-lucide="globe-2"></i> 3D Sites</a
+            >
+          </li>
+          <li>
+            <a href="#the-process" class="nav-link"
+              ><i data-lucide="flask-conical"></i> Process</a
+            >
+          </li>
+          <li>
+            <a href="#humanitarian" class="nav-link"
+              ><i data-lucide="heart-handshake"></i> Welfare</a
+            >
+          </li>
+          <li>
+            <a href="#quality-science" class="nav-link"
+              ><i data-lucide="gem"></i> Quality</a
+            >
+          </li>
+          <li>
+            <a href="#salt-registry" class="nav-link"
+              ><i data-lucide="clipboard-list"></i> Registry</a
+            >
+          </li>
+          <li>
+            <a href="#data-export" class="nav-link nav-cta"
+              >Get the data <i data-lucide="arrow-up-right"></i
+            ></a>
+          </li>
+        </ul>
       </div>
-    </div>
-  </div>
+    </nav>
 
-  <!-- Main Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-      <a href="#hero" class="brand" id="brand-logo">
-        <div class="brand-icon"><span>L</span></div>
-        <div>
-          <div class="brand-title">LAVANA <span>(लवण)</span></div>
-          <span class="brand-tag">Student-led humanitarian atlas</span>
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+      <div class="container">
+        <div class="hero-layout">
+          <div class="hero-content">
+            <div class="hero-eyebrow">
+              <span class="pulse-dot"></span> An independent, student-led atlas
+            </div>
+            <h1>India, shaped<br />by <em>salt.</em></h1>
+            <p class="hero-lead">
+              Extraordinary landscapes. Essential livelihoods. Discover the
+              places, people, and science behind India's everyday mineral.
+            </p>
+            <div class="hero-actions">
+              <a
+                href="#map-explorer"
+                class="btn btn-primary"
+                id="btn-explore-map"
+                >Explore the atlas <i data-lucide="arrow-up-right"></i
+              ></a>
+              <a
+                href="#humanitarian"
+                class="btn btn-text"
+                id="btn-explore-humanitarian"
+                >The human story <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+            <details class="hero-about">
+              <summary>About the project <i data-lucide="plus"></i></summary>
+              <p>
+                We are students assembling this atlas ourselves — from the
+                Little Rann of Kutch to Thoothukudi, Sambhar Salt Lake, and
+                Goa’s khazan lands — so the people who make India’s salt are
+                easier to see and easier to help. Coordinates, yields, and site
+                notes come from published public sources, and each record is
+                cited. The 3D view uses actual satellite imagery and
+                source-based terrain data from the panel below.
+              </p>
+            </details>
+            <div class="hero-footnote">
+              <span>LANDSCAPES / SCIENCE / COMMUNITIES</span
+              ><span>INDIA &middot; 2026</span>
+            </div>
+          </div>
+          <figure class="hero-visual">
+            <img
+              src="assets/salt_pans_hero.jpg"
+              alt="Aerial view of salt pans with crystal pyramids and pink brine pools"
+              class="hero-img"
+              fetchpriority="high"
+              width="1376"
+              height="768"
+            />
+            <div class="hero-image-label">
+              <span class="image-label-dot"></span> A closer look at the world
+              of salt
+            </div>
+            <figcaption>
+              <span>Land. Labour.<br /><em>Living heritage.</em></span
+              ><a
+                href="#crystallizer-3d"
+                id="btn-explore-3d"
+                aria-label="Explore satellite sites in 3D"
+                ><i data-lucide="arrow-up-right"></i
+              ></a>
+            </figcaption>
+          </figure>
         </div>
-      </a>
-
-      <ul class="nav-links">
-        <li><a href="#map-explorer" class="nav-link"><i data-lucide="map"></i> Map</a></li>
-        <li><a href="#crystallizer-3d" class="nav-link"><i data-lucide="globe-2"></i> 3D Sites</a></li>
-        <li><a href="#the-process" class="nav-link"><i data-lucide="flask-conical"></i> Process</a></li>
-        <li><a href="#humanitarian" class="nav-link"><i data-lucide="heart-handshake"></i> Welfare</a></li>
-        <li><a href="#quality-science" class="nav-link"><i data-lucide="gem"></i> Quality</a></li>
-        <li><a href="#salt-registry" class="nav-link"><i data-lucide="clipboard-list"></i> Registry</a></li>
-        <li><a href="#data-export" class="nav-link nav-cta">Download Data</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero" id="hero">
-    <div class="hero-bg-wrapper">
-      <img src="assets/salt_pans_hero.jpg" alt="Aerial view of Indian salt pans at golden hour with crystal pyramids and pink brine pools" class="hero-img">
-      <div class="hero-overlay"></div>
-    </div>
-
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="pulse-dot"></span>
-          <span>STUDENT-BUILT HUMANITARIAN ATLAS</span>
-        </div>
-
-        <h1>The Living Salt of India <br><span class="highlight">From Brine to Pure Crystal</span></h1>
-
-        <p class="hero-lead">
-          We are students assembling this atlas ourselves — from the Little Rann of Kutch to Thoothukudi, Sambhar Salt Lake, and Goa’s khazan lands — so the people who make India’s salt are easier to see and easier to help. Coordinates, yields, and site notes come from published public sources, and each record is cited. The 3D view uses actual satellite imagery and source-based terrain data from the panel below.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#map-explorer" class="btn btn-primary" id="btn-explore-map">
-            <i data-lucide="map"></i> Explore the map
-          </a>
-          <a href="#crystallizer-3d" class="btn btn-pink" id="btn-explore-3d">
-            <i data-lucide="mountain"></i> Open real 3D sites
-          </a>
-          <a href="#humanitarian" class="btn btn-glass" id="btn-explore-humanitarian">
-            <i data-lucide="heart-handshake"></i> Worker welfare
-          </a>
-        </div>
-
         <div class="hero-stats">
           <div class="stat-item">
             <div class="stat-number" id="stat-total-sites">48</div>
@@ -105,12 +219,16 @@
           <div class="stat-item">
             <div class="stat-number">26.6 M</div>
             <div class="stat-label">Tonnes India output</div>
-            <div class="stat-sub">IBM / published mix: Gujarat ~85%, TN ~6.5%, RJ ~6.3%</div>
+            <div class="stat-sub">
+              IBM / published mix: Gujarat ~85%, TN ~6.5%, RJ ~6.3%
+            </div>
           </div>
           <div class="stat-item">
             <div class="stat-number" id="stat-workers-reach">100,000+</div>
             <div class="stat-label">Salt Workers & Families</div>
-            <div class="stat-sub">Agariyas, Uppalam & Mithgauda communities</div>
+            <div class="stat-sub">
+              Agariyas, Uppalam & Mithgauda communities
+            </div>
           </div>
           <div class="stat-item">
             <div class="stat-number">11</div>
@@ -119,698 +237,1339 @@
           </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <!-- SECTION 1: Interactive GIS Map -->
-    <section class="section" id="map-explorer">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge">Open GIS map</div>
-          <h2 class="section-title">Interactive map of Indian salt pans</h2>
-          <p class="section-subtitle">
-            Clusters, marine works, inland playas, and the Drang rock-salt mine, plotted from published coordinates. Click a pin for the dossier, then open the real satellite 3D view of that place.
-          </p>
-        </div>
+    <main id="main-content">
+      <!-- SECTION 1: Interactive GIS Map -->
+      <section class="section" id="map-explorer">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-badge">
+              <span class="chapter-index">01</span> Open GIS map
+            </div>
+            <h2 class="section-title">Interactive map of Indian salt pans</h2>
+            <p class="section-subtitle">
+              Clusters, marine works, inland playas, and the Drang rock-salt
+              mine, plotted from published coordinates. Click a pin for the
+              dossier, then open the real satellite 3D view of that place.
+            </p>
+          </div>
 
-        <div class="map-explorer-wrapper">
-          <div class="map-controls-bar">
-            <div class="map-search-group">
-              <div class="search-input-wrap">
-                <span class="search-icon"><i data-lucide="search"></i></span>
-                <input type="text" id="map-search" class="search-input" placeholder="Search by name, district, or keyword (e.g. Sambhar, Agariya, Thoothukudi)...">
+          <div class="map-explorer-wrapper">
+            <div class="map-controls-bar">
+              <div class="map-search-group">
+                <div class="search-input-wrap">
+                  <span class="search-icon"><i data-lucide="search"></i></span>
+                  <input
+                    type="search"
+                    id="map-search"
+                    class="search-input"
+                    placeholder="Search places, districts, or keywords…"
+                    aria-label="Search salt pans on the map"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+
+              <div class="filter-selects">
+                <select
+                  id="state-filter"
+                  class="custom-select"
+                  aria-label="Filter by State"
+                >
+                  <option value="all">All States & UTs (11)</option>
+                  <option value="Gujarat">Gujarat (11)</option>
+                  <option value="Maharashtra">Maharashtra (8)</option>
+                  <option value="Rajasthan">Rajasthan (6)</option>
+                  <option value="Tamil Nadu">Tamil Nadu (6)</option>
+                  <option value="Goa">Goa (6)</option>
+                  <option value="Andhra Pradesh">Andhra Pradesh (5)</option>
+                  <option value="Odisha">Odisha (2)</option>
+                  <option value="Karnataka">Karnataka (1)</option>
+                  <option value="West Bengal">West Bengal (1)</option>
+                  <option value="Himachal Pradesh">Himachal Pradesh (1)</option>
+                  <option value="Dadra and Nagar Haveli and Daman and Diu">
+                    Daman & Diu (1)
+                  </option>
+                </select>
+
+                <select
+                  id="status-filter"
+                  class="custom-select"
+                  aria-label="Filter by Status"
+                >
+                  <option value="all">All Production Statuses</option>
+                  <option value="active">Active Salt Works</option>
+                  <option value="seasonal">Seasonal Salterns</option>
+                  <option value="ramsar">Ramsar wetlands only</option>
+                </select>
+
+                <div class="map-layer-toggles">
+                  <button
+                    class="layer-btn active"
+                    data-layer="satellite"
+                    id="btn-layer-sat"
+                  >
+                    Satellite
+                  </button>
+                  <button
+                    class="layer-btn"
+                    data-layer="dark"
+                    id="btn-layer-dark"
+                  >
+                    Dark
+                  </button>
+                  <button
+                    class="layer-btn"
+                    data-layer="streets"
+                    id="btn-layer-osm"
+                  >
+                    Streets
+                  </button>
+                </div>
+
+                <button
+                  class="btn btn-glass"
+                  style="padding: 0.55rem 0.9rem; font-size: 0.82rem"
+                  onclick="window.app?.mapInstance?.fitAll()"
+                >
+                  <i data-lucide="scan"></i> Fit all
+                </button>
               </div>
             </div>
 
-            <div class="filter-selects">
-              <select id="state-filter" class="custom-select" aria-label="Filter by State">
-                <option value="all">All States & UTs (11)</option>
-                <option value="Gujarat">Gujarat (11)</option>
-                <option value="Maharashtra">Maharashtra (8)</option>
-                <option value="Rajasthan">Rajasthan (6)</option>
-                <option value="Tamil Nadu">Tamil Nadu (6)</option>
-                <option value="Goa">Goa (6)</option>
-                <option value="Andhra Pradesh">Andhra Pradesh (5)</option>
-                <option value="Odisha">Odisha (2)</option>
-                <option value="Karnataka">Karnataka (1)</option>
-                <option value="West Bengal">West Bengal (1)</option>
-                <option value="Himachal Pradesh">Himachal Pradesh (1)</option>
-                <option value="Dadra and Nagar Haveli and Daman and Diu">Daman & Diu (1)</option>
-              </select>
+            <div class="map-frame">
+              <div
+                id="map-container"
+                aria-label="Interactive map of Indian salt pans"
+              ></div>
+              <div
+                class="map-feedback"
+                id="map-feedback"
+                role="status"
+                hidden
+              ></div>
+            </div>
 
-              <select id="status-filter" class="custom-select" aria-label="Filter by Status">
-                <option value="all">All Production Statuses</option>
-                <option value="active">Active Salt Works</option>
-                <option value="seasonal">Seasonal Salterns</option>
-                <option value="ramsar">Ramsar wetlands only</option>
-              </select>
+            <div class="map-status-overlay">
+              <span class="status-pill"
+                ><span class="indicator ind-active"></span> Select a pin to
+                explore a site</span
+              >
+              <span class="status-pill"
+                ><span class="indicator ind-ramsar"></span> Colours indicate
+                region or Ramsar status</span
+              >
+              <span
+                class="map-match-count"
+                id="map-match-count"
+                aria-live="polite"
+                >Loading sites…</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div class="map-layer-toggles">
-                <button class="layer-btn active" data-layer="satellite" id="btn-layer-sat">Satellite</button>
-                <button class="layer-btn" data-layer="dark" id="btn-layer-dark">Dark Mode</button>
-                <button class="layer-btn" data-layer="streets" id="btn-layer-osm">Terrain</button>
+      <!-- SECTION 2: Real 3D of actual sites -->
+      <section class="section alt-bg" id="crystallizer-3d">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-badge pink">
+              <span class="chapter-index">02</span> Satellite & terrain
+            </div>
+            <h2 class="section-title">
+              A different perspective. The same Earth.
+            </h2>
+            <p class="section-subtitle">
+              This is the real landscape as seen from space, using public
+              imagery and elevation layers. The source is named in the panel so
+              the 3D view remains traceable to the underlying data rather than a
+              fictional model.
+            </p>
+          </div>
+
+          <div class="three-section-card">
+            <div class="three-toolbar">
+              <div class="three-header-info">
+                <span class="three-status-dot"></span>
+                <div>
+                  <div class="three-title" id="three-current-title">
+                    Little Rann of Kutch salt-farming area
+                  </div>
+                  <div class="three-subtitle">
+                    Live satellite 3D from Esri World Imagery and Mapzen
+                    Terrarium terrain data
+                  </div>
+                </div>
               </div>
 
-              <button class="btn btn-glass" style="padding: 0.55rem 0.9rem; font-size: 0.82rem;" onclick="window.app.mapInstance.fitAll()">
-                <i data-lucide="scan"></i> Fit all
+              <div class="three-controls-wrap">
+                <div class="map-layer-toggles">
+                  <button
+                    type="button"
+                    class="layer-btn view-btn active"
+                    data-mode="oblique"
+                  >
+                    Oblique 3D
+                  </button>
+                  <button
+                    type="button"
+                    class="layer-btn view-btn"
+                    data-mode="overhead"
+                  >
+                    Overhead
+                  </button>
+                  <button
+                    type="button"
+                    class="layer-btn view-btn"
+                    data-mode="exaggerated"
+                  >
+                    Relief boost
+                  </button>
+                  <button
+                    type="button"
+                    class="layer-btn view-btn"
+                    data-mode="orbit"
+                  >
+                    Slow orbit
+                  </button>
+                </div>
+
+                <select
+                  class="custom-select"
+                  id="select-3d-preset"
+                  aria-label="Choose a real salt pan site"
+                >
+                  <option value="">Loading sites...</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="three-canvas-container" id="three-canvas-container">
+              <div id="map-3d" aria-label="Satellite terrain viewer"></div>
+              <div
+                class="map-feedback"
+                id="three-feedback"
+                role="status"
+                hidden
+              ></div>
+
+              <div class="three-hud-top">
+                <div class="hud-title" id="three-hud-title">
+                  Little Rann of Kutch salt-farming area
+                </div>
+                <div class="hud-desc" id="three-hud-desc">
+                  Actual coordinates on satellite imagery. Drag to orbit, scroll
+                  to zoom. Sources named below.
+                </div>
+              </div>
+
+              <div class="three-hud-bottom">
+                <div class="stage-indicators source-strip">
+                  Imagery: Esri / Maxar / Earthstar Geographics · Elevation:
+                  Mapzen Terrarium (AWS Terrain Tiles) · Map engine: MapLibre GL
+                  JS
+                </div>
+
+                <div class="three-instructions">
+                  Drag to orbit · Scroll to zoom · Right-drag to pan
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: The Science & Process -->
+      <section class="section" id="the-process">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-badge">
+              <span class="chapter-index">03</span> Industrial Science &
+              Thermodynamics
+            </div>
+            <h2 class="section-title">From brine to crystal.</h2>
+            <p class="section-subtitle">
+              How natural solar evaporation transforms seawater (35 g/L) and
+              sub-soil desert brine into >99.4% pure food-grade sodium chloride
+              through precise fractional crystallization.
+            </p>
+          </div>
+
+          <div class="process-diagram-wrap">
+            <!-- Baumé Interactive Hydrometer -->
+            <div class="baume-slider-card">
+              <div class="baume-header">
+                <div>
+                  <h3 style="color: #ffffff; margin-bottom: 0.25rem">
+                    Interactive Baumé Hydrometer & Phase Precipitation
+                  </h3>
+                  <p style="font-size: 0.85rem; color: var(--text-muted)">
+                    Drag the slider to observe how mineral density dictates what
+                    crystallizes out at each density threshold:
+                  </p>
+                </div>
+                <div class="baume-readout">
+                  <span class="baume-number" id="baume-val">26.5</span>
+                  <span class="baume-unit">° Baumé</span>
+                </div>
+              </div>
+
+              <input
+                type="range"
+                id="baume-range"
+                class="baume-slider"
+                min="3.0"
+                max="32.0"
+                step="0.5"
+                value="26.5"
+                aria-label="Baume Salinity Slider"
+              />
+
+              <div class="baume-state-box">
+                <div>
+                  <div class="baume-phase-title" id="baume-phase-title">
+                    NaCl Crystallizer Pan (Peak Purity)
+                  </div>
+                  <div
+                    class="baume-phase-precipitate"
+                    id="baume-phase-precipitate"
+                  >
+                    Pure Sodium Chloride (NaCl) crystallizes rapidly! Dunaliella
+                    salina microalgae tint the water vivid pink.
+                  </div>
+                </div>
+                <span
+                  class="baume-quality-badge"
+                  id="baume-quality-badge"
+                  style="background: rgba(255, 77, 141, 0.25); color: #ff4d8d"
+                >
+                  Prime Food-Grade Salt
+                </span>
+              </div>
+            </div>
+
+            <!-- 7-Stage Process Flow Grid -->
+            <div class="process-steps-grid">
+              <div class="step-card">
+                <span class="step-number">01</span>
+                <div class="step-icon-wrap"><i data-lucide="waves"></i></div>
+                <h4 class="step-title">Intake & Sluice Gates</h4>
+                <div class="step-be">3.0° – 5.0° Baumé</div>
+                <p class="step-desc">
+                  High-tide seawater or deep desert sub-soil brine (drawn from
+                  40–80 ft aquifers) enters massive primary settling reservoirs.
+                  Suspended silt and organic sediments settle naturally by
+                  gravity over 7–10 days.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-number">02</span>
+                <div class="step-icon-wrap">
+                  <i data-lucide="flask-conical"></i>
+                </div>
+                <h4 class="step-title">Carbonate Precipitation</h4>
+                <div class="step-be">6.0° – 12.0° Baumé</div>
+                <p class="step-desc">
+                  Under relentless tropical solar heat, water evaporates.
+                  Insoluble ferric oxide (Fe₂O₃) and calcium carbonate (CaCO₃ /
+                  chalk) precipitate out on the pan floors, preventing
+                  cloudiness in downstream pans.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-number">03</span>
+                <div class="step-icon-wrap"><i data-lucide="layers"></i></div>
+                <h4 class="step-title">Gypsum Evaporators</h4>
+                <div class="step-be">13.0° – 24.5° Baumé</div>
+                <p class="step-desc">
+                  Brine volume contracts by over 75%. Calcium sulfate dihydrate
+                  (Gypsum: CaSO₄·2H₂O) crystallizes out in massive crusts.
+                  Trapping gypsum here is essential to avoid hard, gritty,
+                  insoluble impurities in the final salt.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-number">04</span>
+                <div class="step-icon-wrap"><i data-lucide="flower-2"></i></div>
+                <h4 class="step-title">Dunaliella Bloom & Crystallization</h4>
+                <div class="step-be">25.5° – 29.5° Baumé</div>
+                <p class="step-desc">
+                  The magical crystallization window! Super-saturated brine
+                  triggers the rapid growth of halophilic microalgae
+                  <em>Dunaliella salina</em> and archaea, producing high
+                  beta-carotene that protects crystals and gives pans their
+                  iconic pink glow. Pure cubic halite (NaCl) forms glistening
+                  sheets.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-number">05</span>
+                <div class="step-icon-wrap">
+                  <i data-lucide="triangle-alert"></i>
+                </div>
+                <h4 class="step-title">Bittern Liquor Discharge</h4>
+                <div class="step-be">29.5° – 32.0° Baumé</div>
+                <p class="step-desc">
+                  Crucial quality & worker safety step: Once brine hits 29.5°
+                  Bé, the remaining "mother liquor" (Bittern) must be swiftly
+                  drained off. If left, bitter magnesium chloride (MgCl₂) and
+                  magnesium sulfate (MgSO₄) deposit, causing bitter taste and
+                  caustic chemical burns.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-number">06</span>
+                <div class="step-icon-wrap"><i data-lucide="hammer"></i></div>
+                <h4 class="step-title">Raking & Pyramidal Heaping</h4>
+                <div class="step-be">Harvesting Phase</div>
+                <p class="step-desc">
+                  Salt workers rake the crystalline beds with traditional wooden
+                  <em>panjhas</em> or mechanical harvesters. Crystals are
+                  gathered into distinct triangular heaps (<em>kumbhas</em>)
+                  along the dykes, allowing residual mother liquor to drain out
+                  naturally under the sun.
+                </p>
+              </div>
+
+              <div class="step-card">
+                <span class="step-number">07</span>
+                <div class="step-icon-wrap"><i data-lucide="package"></i></div>
+                <h4 class="step-title">Washing, Iodization & Packing</h4>
+                <div class="step-be">Refining & Food Safety</div>
+                <p class="step-desc">
+                  Harvested crystals are washed with saturated clean brine to
+                  strip surface impurities, centrifuged to remove moisture,
+                  dosed with Potassium Iodate (KIO₃ at 30 ppm as mandated by
+                  national iodine deficiency prevention laws), and sealed in
+                  moisture-proof packaging.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Crystallization Close-up Feature -->
+          <div class="crystal-feature">
+            <div style="padding: 2.5rem">
+              <div class="section-badge">Mineral Micro-Crystallography</div>
+              <h3
+                style="
+                  font-size: 1.8rem;
+                  margin-bottom: 1rem;
+                  color: var(--text-main);
+                "
+              >
+                The Geometry of Pure Sodium Chloride
+              </h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.95rem;
+                  line-height: 1.7;
+                  margin-bottom: 1.25rem;
+                "
+              >
+                Sodium chloride naturally nucleates into perfect face-centered
+                cubic (FCC) crystal lattices. In slow, controlled solar
+                evaporation pans, the halite crystals form majestic hollow
+                hopper cubes and gleaming transparent geometric blocks.
+              </p>
+              <div
+                style="
+                  display: flex;
+                  gap: 1.5rem;
+                  border-top: 1px solid rgba(0, 0, 0, 0.08);
+                  padding-top: 1.25rem;
+                "
+              >
+                <div>
+                  <strong style="color: var(--accent-cyan); font-size: 1.3rem"
+                    >> 99.4%</strong
+                  >
+                  <div style="font-size: 0.78rem; color: var(--text-dim)">
+                    NaCl Chemical Purity
+                  </div>
+                </div>
+                <div>
+                  <strong style="color: var(--accent-pink); font-size: 1.3rem"
+                    >< 0.15%</strong
+                  >
+                  <div style="font-size: 0.78rem; color: var(--text-dim)">
+                    Magnesium Impurities
+                  </div>
+                </div>
+                <div>
+                  <strong style="color: var(--accent-amber); font-size: 1.3rem"
+                    >30 ppm</strong
+                  >
+                  <div style="font-size: 0.78rem; color: var(--text-dim)">
+                    Potassium Iodate (KIO₃)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="height: 100%; min-height: 320px">
+              <img
+                loading="lazy"
+                width="1376"
+                height="768"
+                src="assets/salt_crystals_macro.jpg"
+                alt="Macro photography of pure cubic halite salt crystals growing in solar crystallization pan"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: The Humanitarian Mission -->
+      <section class="section alt-bg" id="humanitarian">
+        <div class="container">
+          <div class="section-header humanitarian-intro">
+            <div class="section-badge amber">
+              <span class="chapter-index">04</span> Humanitarian project by
+              students
+            </div>
+            <h2 class="section-title">The people behind every pinch.</h2>
+            <p class="section-subtitle">
+              This is a student-led humanitarian project built from public
+              reporting, field context, and cited research. It is designed to
+              make the realities of salt workers visible and to support better
+              welfare and safer work conditions for communities such as the
+              Agariyas, Uppalam workers, and Mithgaudas.
+            </p>
+          </div>
+
+          <div class="humanitarian-hero-card">
+            <div class="humanitarian-image">
+              <img
+                src="assets/salt_worker_welfare.jpg"
+                alt="Salt worker at work in the salt pans"
+                loading="lazy"
+                width="1376"
+                height="768"
+              /><span>Livelihoods at the heart of the landscape</span>
+            </div>
+            <div class="humanitarian-content">
+              <div class="quote-mark" aria-hidden="true">“</div>
+              <p class="humanitarian-quote">
+                “The Agariya’s body does not decompose easily when cremated;
+                their legs, soaked for decades in hyper-saline brine, contain so
+                much salt that they must be gathered separately and buried with
+                care.” This haunting reality describes the sacrifice behind
+                every pinch of salt consumed across the country.
+              </p>
+              <a href="#worker-pillars" class="btn btn-primary hero-cta"
+                >Explore the six pillars <i data-lucide="arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- The 5 Occupational Hazards -->
+          <div style="margin-bottom: 3.5rem">
+            <h3 class="hazards-title">The realities of salt work</h3>
+            <div class="process-steps-grid">
+              <div
+                class="step-card"
+                style="border-left: 4px solid var(--accent-rose)"
+              >
+                <div
+                  class="step-icon-wrap"
+                  style="background: rgba(244, 63, 94, 0.15); color: #f43f5e"
+                >
+                  <i data-lucide="footprints"></i>
+                </div>
+                <h4 class="step-title">Caustic Brine Ulcers</h4>
+                <p class="step-desc">
+                  Constant daily contact with 26° Baumé brine causes intense
+                  epidermal keratosis, deep fissures, and non-healing salt
+                  ulcers that prevent workers from walking without excruciating
+                  pain.
+                </p>
+              </div>
+
+              <div
+                class="step-card"
+                style="border-left: 4px solid var(--accent-amber)"
+              >
+                <div
+                  class="step-icon-wrap"
+                  style="background: rgba(245, 158, 11, 0.15); color: #f59e0b"
+                >
+                  <i data-lucide="glasses"></i>
+                </div>
+                <h4 class="step-title">Blinding UV Glare</h4>
+                <p class="step-desc">
+                  White salt flats reflect up to 90% of intense solar
+                  ultraviolet radiation. Without UV-400 polarized eyewear,
+                  workers suffer chronic photokeratitis, pterygium, and
+                  premature cataract blindness before age 45.
+                </p>
+              </div>
+
+              <div
+                class="step-card"
+                style="border-left: 4px solid var(--accent-rose)"
+              >
+                <div
+                  class="step-icon-wrap"
+                  style="background: rgba(244, 63, 94, 0.15); color: #f43f5e"
+                >
+                  <i data-lucide="thermometer"></i>
+                </div>
+                <h4 class="step-title">Heat Stroke & Kidney Stones</h4>
+                <p class="step-desc">
+                  Summer temperatures in the desert flats frequently exceed
+                  46°C–48°C. Combined with heavy physical raking and acute
+                  shortages of potable drinking water, over 60% of workers
+                  suffer from nephrolithiasis and chronic kidney distress.
+                </p>
+              </div>
+
+              <div
+                class="step-card"
+                style="border-left: 4px solid var(--accent-purple)"
+              >
+                <div
+                  class="step-icon-wrap"
+                  style="background: rgba(168, 85, 247, 0.15); color: #a855f7"
+                >
+                  <i data-lucide="fuel"></i>
+                </div>
+                <h4 class="step-title">The Diesel Debt Trap</h4>
+                <p class="step-desc">
+                  Pumping sub-soil brine requires diesel generators that consume
+                  1,200 to 1,800 liters of diesel per family per season, eating
+                  up to 65% to 70% of total salt revenues and leaving families
+                  bound to loan sharks (<em>vyaparis</em>).
+                </p>
+              </div>
+
+              <div
+                class="step-card"
+                style="border-left: 4px solid var(--accent-cyan)"
+              >
+                <div class="step-icon-wrap"><i data-lucide="tent"></i></div>
+                <h4 class="step-title">Seasonal Child Disconnection</h4>
+                <p class="step-desc">
+                  Migrating for 8 months every year to remote mudflats forces
+                  entire families into makeshift huts (<em>kumbhas</em>) with no
+                  electricity, no sanitation, and no access to local village
+                  schools, causing intergenerational poverty.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- The 6 Humanitarian Action Pillars -->
+          <div id="worker-pillars">
+            <div class="section-header" style="margin-bottom: 2.5rem">
+              <div class="section-badge">Actionable Solutions</div>
+              <h3 style="font-size: 1.8rem; color: var(--text-main)">
+                Six paths toward better livelihoods
+              </h3>
+            </div>
+
+            <div class="humanitarian-pillars-grid">
+              <div class="pillar-card">
+                <div class="pillar-icon"><i data-lucide="sun"></i></div>
+                <h4 class="pillar-title">1. Solar Submersible Brine Pumps</h4>
+                <p class="pillar-text">
+                  Replacing noisy, polluting diesel generators with solar
+                  photovoltaic pumping arrays. This immediately eliminates
+                  diesel fuel bills, saving each salt family ₹75,000 to
+                  ₹1,00,000 per season and preventing over 2.5 tonnes of carbon
+                  emissions per pan.
+                </p>
+                <div class="pillar-impact">
+                  Direct Financial Impact: +60% household seasonal net income.
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon"><i data-lucide="footprints"></i></div>
+                <h4 class="pillar-title">
+                  2. Ergonomic Podiatric & Dermal Gear
+                </h4>
+                <p class="pillar-text">
+                  Standard heavy gumboots trap sweat and cause fungal
+                  infections. We advocate for custom-designed lightweight,
+                  breathable, white neoprene-lined salt boots with non-slip
+                  treads, accompanied by barrier petroleum-lanolin salves to
+                  completely prevent salt fissures.
+                </p>
+                <div class="pillar-impact">
+                  Health Impact: 95% reduction in chronic salt ulcers and foot
+                  lesions.
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon"><i data-lucide="eye"></i></div>
+                <h4 class="pillar-title">3. UV-400 Polarized Safety Eyewear</h4>
+                <p class="pillar-text">
+                  Distributing wrap-around, shatter-resistant polarized
+                  sunglasses engineered specifically for 90% albedo salt
+                  environments. Side-shields prevent peripheral dust and glare
+                  intrusion, stopping ultraviolet photokeratitis in its tracks.
+                </p>
+                <div class="pillar-impact">
+                  Ocular Impact: Preserves natural vision and halts early
+                  cataract onset.
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon"><i data-lucide="droplets"></i></div>
+                <h4 class="pillar-title">
+                  4. Solar Desalination & Potable Water Hubs
+                </h4>
+                <p class="pillar-text">
+                  Installing localized solar-powered reverse osmosis (RO)
+                  drinking water kiosks and insulated water transport tankers
+                  that deliver 20 liters of cold, mineralized potable water
+                  directly to worker shacks across remote rann expanses.
+                </p>
+                <div class="pillar-impact">
+                  Welfare Impact: Complete elimination of dehydration-induced
+                  kidney failure.
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon"><i data-lucide="bus"></i></div>
+                <h4 class="pillar-title">
+                  5. Mobile 'Rann Shalas' & Tele-Clinics
+                </h4>
+                <p class="pillar-text">
+                  Deploying mobile tent classrooms (<em>Rann Shalas</em>)
+                  equipped with digital learning tablets and solar power to
+                  ensure children never drop out during the 8-month salt cycle,
+                  alongside specialized <em>Sanjeevani</em> medical vans
+                  providing dermatological and podiatric care.
+                </p>
+                <div class="pillar-impact">
+                  Generational Impact: Zero school dropouts and continuous child
+                  education.
+                </div>
+              </div>
+
+              <div class="pillar-card">
+                <div class="pillar-icon"><i data-lucide="scale"></i></div>
+                <h4 class="pillar-title">
+                  6. Direct Fair-Trade Producer Cooperatives
+                </h4>
+                <p class="pillar-text">
+                  Organizing salt farmers into democratic producer cooperatives
+                  with direct institutional tie-ups to public distribution
+                  systems and FMCG companies. Eliminating exploitative middlemen
+                  guarantees a transparent minimum floor price for raw crystal
+                  salt.
+                </p>
+                <div class="pillar-impact">
+                  Economic Impact: Triples the per-ton price received by
+                  grassroots producers.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: Quality Science -->
+      <section class="section" id="quality-science">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-badge">
+              <span class="chapter-index">05</span> Quality Optimization &
+              Circular Economy
+            </div>
+            <h2 class="section-title">Better salt. More possibilities.</h2>
+            <p class="section-subtitle">
+              How optimizing the chemical evaporation sequence simultaneously
+              protects workers from hazardous bittern and produces medical-grade
+              sodium chloride, gourmet artisanal salts, and valuable industrial
+              minerals.
+            </p>
+          </div>
+
+          <div class="quality-grid">
+            <div class="quality-card">
+              <div class="section-badge">Chemical Purity</div>
+              <h3>Optimized Purity Protocol</h3>
+              <ul class="quality-list">
+                <li class="quality-item">
+                  <span class="quality-icon"><i data-lucide="check"></i></span>
+                  <div>
+                    <strong>Automated Baumé Cutoff Sensors:</strong>
+                    Continuous digital density sensors alert operators the exact
+                    moment brine hits 29.5° Bé, ensuring bittern is drained
+                    automatically so workers never have to wade into hazardous
+                    caustic mother liquor.
+                  </div>
+                </li>
+                <li class="quality-item">
+                  <span class="quality-icon"><i data-lucide="check"></i></span>
+                  <div>
+                    <strong>Microplastic Multi-Stage Filtration:</strong>
+                    Intake seawater passes through natural bio-sand filters and
+                    micro-mesh screens before reaching crystallizers,
+                    guaranteeing 100% microplastic-free table salt for human
+                    consumption.
+                  </div>
+                </li>
+                <li class="quality-item">
+                  <span class="quality-icon"><i data-lucide="check"></i></span>
+                  <div>
+                    <strong>Enclosed Solar Tunnel Drying:</strong>
+                    Transitioning from open ground drying to enclosed solar
+                    tunnel dryers prevents airborne windblown dust, road soot,
+                    and bird droppings from contaminating crystalline salt.
+                  </div>
+                </li>
+                <li class="quality-item">
+                  <span class="quality-icon"><i data-lucide="check"></i></span>
+                  <div>
+                    <strong>Codex & FSSAI Conformance:</strong>
+                    Guarantees >99.4% NaCl purity on dry basis, water insoluble
+                    matter <0.1%, and exact 30 ppm Potassium Iodate
+                    fortification for cognitive health.
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="quality-card">
+              <div class="section-badge pink">Circular Economy</div>
+              <h3>Valorization of Bittern By-Products</h3>
+              <ul class="quality-list">
+                <li class="quality-item">
+                  <span class="quality-icon" style="color: var(--accent-pink)"
+                    ><i data-lucide="sparkles"></i
+                  ></span>
+                  <div>
+                    <strong>Magnesium Hydroxide & Epsom Salts:</strong>
+                    Treating drained bittern with lime yields Magnesium
+                    Hydroxide Mg(OH)₂ used in pharmaceuticals (antacids) and
+                    flame retardants, converting hazardous waste into high-value
+                    revenue.
+                  </div>
+                </li>
+                <li class="quality-item">
+                  <span class="quality-icon" style="color: var(--accent-pink)"
+                    ><i data-lucide="sparkles"></i
+                  ></span>
+                  <div>
+                    <strong>Bromine Extraction:</strong>
+                    India’s salt bitterns are rich in bromine ions (up to 2,500
+                    ppm), supplying vital raw materials for agrochemicals,
+                    pharmaceuticals, and energy storage batteries.
+                  </div>
+                </li>
+                <li class="quality-item">
+                  <span class="quality-icon" style="color: var(--accent-pink)"
+                    ><i data-lucide="sparkles"></i
+                  ></span>
+                  <div>
+                    <strong>Potash (SOP) Fertilizer:</strong>
+                    Recovering potassium salts from mixed salt bittern fractions
+                    provides organic Sulphate of Potash (K₂SO₄) for Indian
+                    farmers, reducing reliance on expensive imported
+                    fertilizers.
+                  </div>
+                </li>
+                <li class="quality-item">
+                  <span class="quality-icon" style="color: var(--accent-pink)"
+                    ><i data-lucide="sparkles"></i
+                  ></span>
+                  <div>
+                    <strong>Artisanal Gourmet Salt Branding:</strong>
+                    Marketing delicate surface crystals as "Fleur de Sel" and
+                    large desert cubic crystals as "Kutch Baragara Salt"
+                    commands 10x the price of generic bulk salt, funding
+                    community worker welfare trusts.
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: The Full Registry -->
+      <section class="section alt-bg" id="salt-registry">
+        <div class="container">
+          <div class="section-header">
+            <div class="section-badge">
+              <span class="chapter-index">06</span> Compiled directory
+            </div>
+            <h2 class="section-title">Find a place. Discover its story.</h2>
+            <p class="section-subtitle">
+              Search and inspect sites we assembled from public records. Each
+              card links to sources. Production numbers are whoever published
+              them — not figures we invented, and not an official government
+              roster.
+            </p>
+          </div>
+
+          <div class="registry-controls">
+            <div class="search-input-wrap">
+              <span class="search-icon"><i data-lucide="search"></i></span
+              ><input
+                type="search"
+                id="registry-search"
+                class="search-input"
+                placeholder="Search the registry…"
+                aria-label="Search the salt pan registry"
+                autocomplete="off"
+              />
+            </div>
+            <select
+              id="registry-state-filter"
+              class="custom-select"
+              aria-label="Filter registry by state"
+            >
+              <option value="all">All States & UTs (11)</option>
+              <option value="Gujarat">Gujarat (11)</option>
+              <option value="Maharashtra">Maharashtra (8)</option>
+              <option value="Rajasthan">Rajasthan (6)</option>
+              <option value="Tamil Nadu">Tamil Nadu (6)</option>
+              <option value="Goa">Goa (6)</option>
+              <option value="Andhra Pradesh">Andhra Pradesh (5)</option>
+              <option value="Odisha">Odisha (2)</option>
+              <option value="Karnataka">Karnataka (1)</option>
+              <option value="West Bengal">West Bengal (1)</option>
+              <option value="Himachal Pradesh">Himachal Pradesh (1)</option>
+              <option value="Dadra and Nagar Haveli and Daman and Diu">
+                Daman & Diu (1)
+              </option></select
+            ><select
+              id="registry-status-filter"
+              class="custom-select"
+              aria-label="Filter registry by status"
+            >
+              <option value="all">All Production Statuses</option>
+              <option value="active">Active Salt Works</option>
+              <option value="seasonal">Seasonal Salterns</option>
+              <option value="ramsar">Ramsar wetlands only</option></select
+            ><button
+              class="btn btn-text reset-filters"
+              type="button"
+              id="reset-filters"
+            >
+              <i data-lucide="rotate-ccw"></i> Reset
+            </button>
+          </div>
+          <div
+            class="active-filters"
+            id="active-filters"
+            aria-live="polite"
+          ></div>
+          <div class="registry-toolbar">
+            <div
+              class="results-count"
+              id="results-count"
+              role="status"
+              aria-live="polite"
+            >
+              Loading verified salt pan records...
+            </div>
+
+            <div style="display: flex; gap: 0.75rem">
+              <button
+                class="btn btn-glass"
+                style="font-size: 0.85rem; padding: 0.5rem 1rem"
+                onclick="window.app.exportGeoJSON()"
+              >
+                <i data-lucide="download"></i> Export GeoJSON
+              </button>
+              <button
+                class="btn btn-primary"
+                style="font-size: 0.85rem; padding: 0.5rem 1rem"
+                onclick="window.app.exportCSV()"
+              >
+                <i data-lucide="table"></i> Export CSV
               </button>
             </div>
           </div>
 
-          <div id="map-container"></div>
+          <div class="pans-grid" id="pans-grid">
+            <div class="registry-loading" role="status">
+              <span class="loading-spinner"></span> Preparing the atlas…
+            </div>
+          </div>
+          <div class="registry-pagination">
+            <p id="registry-progress"></p>
+            <button class="btn btn-outline" id="load-more" type="button" hidden>
+              Explore more sites <i data-lucide="plus"></i>
+            </button>
+          </div>
+        </div>
+      </section>
 
-          <div class="map-status-overlay">
-            <span class="status-pill"><span class="indicator ind-active"></span> Active / Seasonal</span>
-            <span class="status-pill"><span class="indicator ind-ramsar"></span> Ramsar Wetland / Biosphere</span>
-            <span class="status-pill"><span class="indicator" style="background:#00f0ff;"></span> Pin opens dossier and 3D site</span>
+      <!-- SECTION 7: Data Export & Research Suite -->
+      <section class="section" id="data-export">
+        <div class="container">
+          <div class="export-card">
+            <div class="export-info">
+              <div class="section-badge">
+                <span class="chapter-index">07</span> Open data, cited
+              </div>
+              <h3
+                style="
+                  font-size: 1.8rem;
+                  margin-bottom: 0.75rem;
+                  color: var(--text-main);
+                "
+              >
+                Download the dataset we compiled
+              </h3>
+              <p
+                style="
+                  color: var(--text-muted);
+                  font-size: 0.95rem;
+                  line-height: 1.6;
+                "
+              >
+                Students built this independently for humanitarian use.
+                Coordinates use WGS84 (EPSG:4326). We drew on published material
+                from the Salt Commissioner's Organisation (SCO), CSIR–CSMCRI
+                Bhavnagar, NRSC / ISRO Salt Pan Atlas, Indian Bureau of Mines
+                (IBM) yearbooks, journalism (including PARI), and academic
+                papers — each record names its source and credit remains with
+                the original authors.
+              </p>
+            </div>
+            <div class="export-actions">
+              <button
+                class="btn btn-primary"
+                onclick="window.app.exportGeoJSON()"
+              >
+                <i data-lucide="globe"></i> Download GeoJSON
+              </button>
+              <button class="btn btn-pink" onclick="window.app.exportCSV()">
+                <i data-lucide="file-text"></i> Download CSV
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Detailed Dossier Modal -->
+    <div class="modal-overlay" id="dossier-modal" inert>
+      <div
+        class="modal-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-pan-name"
+        tabindex="-1"
+      >
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <div class="modal-badges">
+              <span class="pan-id-tag" id="modal-pan-id">IN-GJ-001</span>
+              <span class="pan-status-tag active" id="modal-pan-status"
+                >Active</span
+              >
+            </div>
+            <h3 class="modal-title" id="modal-pan-name">
+              Little Rann of Kutch Salt Pans
+            </h3>
+            <div class="modal-subtitle" id="modal-pan-loc">
+              Surendranagar, Gujarat
+            </div>
+          </div>
+          <button
+            class="modal-close-btn"
+            id="modal-close"
+            aria-label="Close modal"
+          >
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+
+        <div
+          class="modal-tabs"
+          role="tablist"
+          aria-label="Site dossier sections"
+        >
+          <button
+            class="modal-tab active"
+            data-tab="geo"
+            id="dossier-tab-geo"
+            role="tab"
+            aria-controls="tab-geo"
+            aria-selected="true"
+            tabindex="0"
+          >
+            <i data-lucide="map-pin"></i> Place
+          </button>
+          <button
+            class="modal-tab"
+            data-tab="ops"
+            id="dossier-tab-ops"
+            role="tab"
+            aria-controls="tab-ops"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <i data-lucide="factory"></i> Operations
+          </button>
+          <button
+            class="modal-tab"
+            data-tab="worker"
+            id="dossier-tab-worker"
+            role="tab"
+            aria-controls="tab-worker"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <i data-lucide="heart-handshake"></i> Workers
+          </button>
+          <button
+            class="modal-tab"
+            data-tab="eco"
+            id="dossier-tab-eco"
+            role="tab"
+            aria-controls="tab-eco"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <i data-lucide="leaf"></i> Ecology
+          </button>
+          <button
+            class="modal-tab"
+            data-tab="history"
+            id="dossier-tab-history"
+            role="tab"
+            aria-controls="tab-history"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <i data-lucide="landmark"></i> Heritage
+          </button>
+          <button
+            class="modal-tab"
+            data-tab="sources"
+            id="dossier-tab-sources"
+            role="tab"
+            aria-controls="tab-sources"
+            aria-selected="false"
+            tabindex="-1"
+          >
+            <i data-lucide="book-open"></i> Sources
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div
+            class="modal-tab-content active"
+            id="tab-geo"
+            role="tabpanel"
+            aria-labelledby="dossier-tab-geo"
+            tabindex="0"
+          >
+            <div id="tab-geo-content"></div>
+          </div>
+
+          <div
+            class="modal-tab-content"
+            id="tab-ops"
+            role="tabpanel"
+            aria-labelledby="dossier-tab-ops"
+            tabindex="0"
+          >
+            <div id="tab-ops-content"></div>
+          </div>
+
+          <div
+            class="modal-tab-content"
+            id="tab-worker"
+            role="tabpanel"
+            aria-labelledby="dossier-tab-worker"
+            tabindex="0"
+          >
+            <div id="tab-worker-content"></div>
+          </div>
+
+          <div
+            class="modal-tab-content"
+            id="tab-eco"
+            role="tabpanel"
+            aria-labelledby="dossier-tab-eco"
+            tabindex="0"
+          >
+            <div id="tab-eco-content"></div>
+          </div>
+
+          <div
+            class="modal-tab-content"
+            id="tab-history"
+            role="tabpanel"
+            aria-labelledby="dossier-tab-history"
+            tabindex="0"
+          >
+            <div id="tab-history-content"></div>
+          </div>
+
+          <div
+            class="modal-tab-content"
+            id="tab-sources"
+            role="tabpanel"
+            aria-labelledby="dossier-tab-sources"
+            tabindex="0"
+          >
+            <div id="tab-sources-content"></div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-glass" onclick="window.app.closeDossier()">
+            Close
+          </button>
+          <div style="display: flex; gap: 0.5rem">
+            <button
+              class="btn btn-primary"
+              onclick="
+                window.app.launch3D(window.app.selectedPan?.id);
+                window.app.closeDossier();
+              "
+            >
+              <i data-lucide="mountain"></i> Open in 3D
+            </button>
+            <button
+              class="btn btn-pink"
+              onclick="
+                window.app.focusOnMap(window.app.selectedPan?.id);
+                window.app.closeDossier();
+              "
+            >
+              <i data-lucide="map"></i> View on map
+            </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- SECTION 2: Real 3D of actual sites -->
-    <section class="section alt-bg" id="crystallizer-3d">
+    <!-- Footer -->
+    <footer class="footer">
       <div class="container">
-        <div class="section-header">
-          <div class="section-badge pink">Real Earth, not a model</div>
-          <h2 class="section-title">3D satellite view of the actual salt pans</h2>
-          <p class="section-subtitle">
-            This is the real landscape as seen from space, using public imagery and elevation layers. The source is named in the panel so the 3D view remains traceable to the underlying data rather than a fictional model.
-          </p>
-        </div>
-
-        <div class="three-section-card">
-          <div class="three-toolbar">
-            <div class="three-header-info">
-              <span class="three-status-dot"></span>
-              <div>
-                <div class="three-title" id="three-current-title">Little Rann of Kutch salt-farming area</div>
-                <div class="three-subtitle">Live satellite 3D from Esri World Imagery and Mapzen Terrarium terrain data</div>
-              </div>
-            </div>
-
-            <div class="three-controls-wrap">
-              <div class="map-layer-toggles">
-                <button type="button" class="layer-btn view-btn active" data-mode="oblique">Oblique 3D</button>
-                <button type="button" class="layer-btn view-btn" data-mode="overhead">Overhead</button>
-                <button type="button" class="layer-btn view-btn" data-mode="exaggerated">Relief boost</button>
-                <button type="button" class="layer-btn view-btn" data-mode="orbit">Slow orbit</button>
-              </div>
-
-              <select class="custom-select" id="select-3d-preset" aria-label="Choose a real salt pan site">
-                <option value="">Loading sites...</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="three-canvas-container" id="three-canvas-container">
-            <div id="map-3d"></div>
-
-            <div class="three-hud-top">
-              <div class="hud-title" id="three-hud-title">
-                Little Rann of Kutch salt-farming area
-              </div>
-              <div class="hud-desc" id="three-hud-desc">
-                Actual coordinates on satellite imagery. Drag to orbit, scroll to zoom. Sources named below.
-              </div>
-            </div>
-
-            <div class="three-hud-bottom">
-              <div class="stage-indicators source-strip">
-                Imagery: Esri / Maxar / Earthstar Geographics · Elevation: Mapzen Terrarium (AWS Terrain Tiles) · Map engine: MapLibre GL JS
-              </div>
-
-              <div class="three-instructions">
-                Drag to orbit · Scroll to zoom · Right-drag to pan
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 3: The Science & Process -->
-    <section class="section" id="the-process">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge">Industrial Science & Thermodynamics</div>
-          <h2 class="section-title">The Salt Production Journey: From Brine to Pure Crystal</h2>
-          <p class="section-subtitle">
-            How natural solar evaporation transforms seawater (35 g/L) and sub-soil desert brine into >99.4% pure food-grade sodium chloride through precise fractional crystallization.
-          </p>
-        </div>
-
-        <div class="process-diagram-wrap">
-          <!-- Baumé Interactive Hydrometer -->
-          <div class="baume-slider-card">
-            <div class="baume-header">
-              <div>
-                <h3 style="color: #ffffff; margin-bottom: 0.25rem;">Interactive Baumé Hydrometer & Phase Precipitation</h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted);">Drag the slider to observe how mineral density dictates what crystallizes out at each density threshold:</p>
-              </div>
-              <div class="baume-readout">
-                <span class="baume-number" id="baume-val">26.5</span>
-                <span class="baume-unit">° Baumé</span>
-              </div>
-            </div>
-
-            <input type="range" id="baume-range" class="baume-slider" min="3.0" max="32.0" step="0.5" value="26.5" aria-label="Baume Salinity Slider">
-
-            <div class="baume-state-box">
-              <div>
-                <div class="baume-phase-title" id="baume-phase-title">NaCl Crystallizer Pan (Peak Purity)</div>
-                <div class="baume-phase-precipitate" id="baume-phase-precipitate">
-                  Pure Sodium Chloride (NaCl) crystallizes rapidly! Dunaliella salina microalgae tint the water vivid pink.
-                </div>
-              </div>
-              <span class="baume-quality-badge" id="baume-quality-badge" style="background: rgba(255, 77, 141, 0.25); color: #ff4d8d;">
-                Prime Food-Grade Salt
-              </span>
-            </div>
-          </div>
-
-          <!-- 7-Stage Process Flow Grid -->
-          <div class="process-steps-grid">
-            <div class="step-card">
-              <span class="step-number">01</span>
-              <div class="step-icon-wrap"><i data-lucide="waves"></i></div>
-              <h4 class="step-title">Intake & Sluice Gates</h4>
-              <div class="step-be">3.0° – 5.0° Baumé</div>
-              <p class="step-desc">
-                High-tide seawater or deep desert sub-soil brine (drawn from 40–80 ft aquifers) enters massive primary settling reservoirs. Suspended silt and organic sediments settle naturally by gravity over 7–10 days.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-number">02</span>
-              <div class="step-icon-wrap"><i data-lucide="flask-conical"></i></div>
-              <h4 class="step-title">Carbonate Precipitation</h4>
-              <div class="step-be">6.0° – 12.0° Baumé</div>
-              <p class="step-desc">
-                Under relentless tropical solar heat, water evaporates. Insoluble ferric oxide (Fe₂O₃) and calcium carbonate (CaCO₃ / chalk) precipitate out on the pan floors, preventing cloudiness in downstream pans.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-number">03</span>
-              <div class="step-icon-wrap"><i data-lucide="layers"></i></div>
-              <h4 class="step-title">Gypsum Evaporators</h4>
-              <div class="step-be">13.0° – 24.5° Baumé</div>
-              <p class="step-desc">
-                Brine volume contracts by over 75%. Calcium sulfate dihydrate (Gypsum: CaSO₄·2H₂O) crystallizes out in massive crusts. Trapping gypsum here is essential to avoid hard, gritty, insoluble impurities in the final salt.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-number">04</span>
-              <div class="step-icon-wrap"><i data-lucide="flower-2"></i></div>
-              <h4 class="step-title">Dunaliella Bloom & Crystallization</h4>
-              <div class="step-be">25.5° – 29.5° Baumé</div>
-              <p class="step-desc">
-                The magical crystallization window! Super-saturated brine triggers the rapid growth of halophilic microalgae <em>Dunaliella salina</em> and archaea, producing high beta-carotene that protects crystals and gives pans their iconic pink glow. Pure cubic halite (NaCl) forms glistening sheets.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-number">05</span>
-              <div class="step-icon-wrap"><i data-lucide="triangle-alert"></i></div>
-              <h4 class="step-title">Bittern Liquor Discharge</h4>
-              <div class="step-be">29.5° – 32.0° Baumé</div>
-              <p class="step-desc">
-                Crucial quality & worker safety step: Once brine hits 29.5° Bé, the remaining "mother liquor" (Bittern) must be swiftly drained off. If left, bitter magnesium chloride (MgCl₂) and magnesium sulfate (MgSO₄) deposit, causing bitter taste and caustic chemical burns.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-number">06</span>
-              <div class="step-icon-wrap"><i data-lucide="hammer"></i></div>
-              <h4 class="step-title">Raking & Pyramidal Heaping</h4>
-              <div class="step-be">Harvesting Phase</div>
-              <p class="step-desc">
-                Salt workers rake the crystalline beds with traditional wooden <em>panjhas</em> or mechanical harvesters. Crystals are gathered into distinct triangular heaps (<em>kumbhas</em>) along the dykes, allowing residual mother liquor to drain out naturally under the sun.
-              </p>
-            </div>
-
-            <div class="step-card">
-              <span class="step-number">07</span>
-              <div class="step-icon-wrap"><i data-lucide="package"></i></div>
-              <h4 class="step-title">Washing, Iodization & Packing</h4>
-              <div class="step-be">Refining & Food Safety</div>
-              <p class="step-desc">
-                Harvested crystals are washed with saturated clean brine to strip surface impurities, centrifuged to remove moisture, dosed with Potassium Iodate (KIO₃ at 30 ppm as mandated by national iodine deficiency prevention laws), and sealed in moisture-proof packaging.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Crystallization Close-up Feature -->
-        <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; box-shadow: var(--shadow-lg);">
-          <div style="padding: 2.5rem;">
-            <div class="section-badge">Mineral Micro-Crystallography</div>
-            <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">The Geometry of Pure Sodium Chloride</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.25rem;">
-              Sodium chloride naturally nucleates into perfect face-centered cubic (FCC) crystal lattices. In slow, controlled solar evaporation pans, the halite crystals form majestic hollow hopper cubes and gleaming transparent geometric blocks.
+        <div class="footer-grid">
+          <div>
+            <a href="#hero" class="brand" style="margin-bottom: 0.5rem">
+              <div class="brand-icon">NaCl</div>
+              <div class="brand-title">LAVANA <span>(लवण)</span></div>
+            </a>
+            <p class="footer-brand-desc">
+              Built by students, for humanitarian use. We map salt pans, cite
+              public data, and work toward better conditions for Agariya and
+              Uppalam workers.
             </p>
-            <div style="display: flex; gap: 1.5rem; border-top: 1px solid rgba(0,0,0,0.08); padding-top: 1.25rem;">
-              <div>
-                <strong style="color: var(--accent-cyan); font-size: 1.3rem;">> 99.4%</strong>
-                <div style="font-size: 0.78rem; color: var(--text-dim);">NaCl Chemical Purity</div>
-              </div>
-              <div>
-                <strong style="color: var(--accent-pink); font-size: 1.3rem;">< 0.15%</strong>
-                <div style="font-size: 0.78rem; color: var(--text-dim);">Magnesium Impurities</div>
-              </div>
-              <div>
-                <strong style="color: var(--accent-amber); font-size: 1.3rem;">30 ppm</strong>
-                <div style="font-size: 0.78rem; color: var(--text-dim);">Potassium Iodate (KIO₃)</div>
-              </div>
-            </div>
-          </div>
-          <div style="height: 100%; min-height: 320px;">
-            <img src="assets/salt_crystals_macro.jpg" alt="Macro photography of pure cubic halite salt crystals growing in solar crystallization pan" style="width: 100%; height: 100%; object-fit: cover;">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 4: The Humanitarian Mission -->
-    <section class="section alt-bg" id="humanitarian">
-      <div class="container">
-        <div class="section-header humanitarian-intro">
-            <div class="section-badge amber">Humanitarian project by students</div>
-            <h2 class="section-title">Transforming the lives of India's salt pan workers</h2>
-            <p class="section-subtitle">
-              This is a student-led humanitarian project built from public reporting, field context, and cited research. It is designed to make the realities of salt workers visible and to support better welfare and safer work conditions for communities such as the Agariyas, Uppalam workers, and Mithgaudas.
-            </p>
-        </div>
-
-        <div class="humanitarian-hero-card">
-          <div class="humanitarian-content">
-            <p class="humanitarian-quote">
-              “The Agariya’s body does not decompose easily when cremated; their legs, soaked for decades in hyper-saline brine, contain so much salt that they must be gathered separately and buried with care.” This haunting reality describes the sacrifice behind every pinch of salt consumed across the country.
-            </p>
-            <a href="#worker-pillars" class="btn btn-primary hero-cta">Inspect 6 Humanitarian Pillars</a>
-          </div>
-        </div>
-
-        <!-- The 5 Occupational Hazards -->
-        <div style="margin-bottom: 3.5rem;">
-          <h3 class="hazards-title">The Five Critical Hazards Faced by Salt Workers</h3>
-          <div class="process-steps-grid">
-            <div class="step-card" style="border-left: 4px solid var(--accent-rose);">
-              <div class="step-icon-wrap" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;"><i data-lucide="footprints"></i></div>
-              <h4 class="step-title">Caustic Brine Ulcers</h4>
-              <p class="step-desc">
-                Constant daily contact with 26° Baumé brine causes intense epidermal keratosis, deep fissures, and non-healing salt ulcers that prevent workers from walking without excruciating pain.
-              </p>
-            </div>
-
-            <div class="step-card" style="border-left: 4px solid var(--accent-amber);">
-              <div class="step-icon-wrap" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;"><i data-lucide="glasses"></i></div>
-              <h4 class="step-title">Blinding UV Glare</h4>
-              <p class="step-desc">
-                White salt flats reflect up to 90% of intense solar ultraviolet radiation. Without UV-400 polarized eyewear, workers suffer chronic photokeratitis, pterygium, and premature cataract blindness before age 45.
-              </p>
-            </div>
-
-            <div class="step-card" style="border-left: 4px solid var(--accent-rose);">
-              <div class="step-icon-wrap" style="background: rgba(244, 63, 94, 0.15); color: #f43f5e;"><i data-lucide="thermometer"></i></div>
-              <h4 class="step-title">Heat Stroke & Kidney Stones</h4>
-              <p class="step-desc">
-                Summer temperatures in the desert flats frequently exceed 46°C–48°C. Combined with heavy physical raking and acute shortages of potable drinking water, over 60% of workers suffer from nephrolithiasis and chronic kidney distress.
-              </p>
-            </div>
-
-            <div class="step-card" style="border-left: 4px solid var(--accent-purple);">
-              <div class="step-icon-wrap" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;"><i data-lucide="fuel"></i></div>
-              <h4 class="step-title">The Diesel Debt Trap</h4>
-              <p class="step-desc">
-                Pumping sub-soil brine requires diesel generators that consume 1,200 to 1,800 liters of diesel per family per season, eating up to 65% to 70% of total salt revenues and leaving families bound to loan sharks (<em>vyaparis</em>).
-              </p>
-            </div>
-
-            <div class="step-card" style="border-left: 4px solid var(--accent-cyan);">
-              <div class="step-icon-wrap"><i data-lucide="tent"></i></div>
-              <h4 class="step-title">Seasonal Child Disconnection</h4>
-              <p class="step-desc">
-                Migrating for 8 months every year to remote mudflats forces entire families into makeshift huts (<em>kumbhas</em>) with no electricity, no sanitation, and no access to local village schools, causing intergenerational poverty.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- The 6 Humanitarian Action Pillars -->
-        <div id="worker-pillars">
-          <div class="section-header" style="margin-bottom: 2.5rem;">
-            <div class="section-badge">Actionable Solutions</div>
-            <h3 style="font-size: 1.8rem; color: var(--text-main);">The 6-Pillar Humanitarian Transformation Framework</h3>
           </div>
 
-          <div class="humanitarian-pillars-grid">
-            <div class="pillar-card">
-              <div class="pillar-icon"><i data-lucide="sun"></i></div>
-              <h4 class="pillar-title">1. Solar Submersible Brine Pumps</h4>
-              <p class="pillar-text">
-                Replacing noisy, polluting diesel generators with solar photovoltaic pumping arrays. This immediately eliminates diesel fuel bills, saving each salt family ₹75,000 to ₹1,00,000 per season and preventing over 2.5 tonnes of carbon emissions per pan.
-              </p>
-              <div class="pillar-impact">
-                Direct Financial Impact: +60% household seasonal net income.
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon"><i data-lucide="footprints"></i></div>
-              <h4 class="pillar-title">2. Ergonomic Podiatric & Dermal Gear</h4>
-              <p class="pillar-text">
-                Standard heavy gumboots trap sweat and cause fungal infections. We advocate for custom-designed lightweight, breathable, white neoprene-lined salt boots with non-slip treads, accompanied by barrier petroleum-lanolin salves to completely prevent salt fissures.
-              </p>
-              <div class="pillar-impact">
-                Health Impact: 95% reduction in chronic salt ulcers and foot lesions.
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon"><i data-lucide="eye"></i></div>
-              <h4 class="pillar-title">3. UV-400 Polarized Safety Eyewear</h4>
-              <p class="pillar-text">
-                Distributing wrap-around, shatter-resistant polarized sunglasses engineered specifically for 90% albedo salt environments. Side-shields prevent peripheral dust and glare intrusion, stopping ultraviolet photokeratitis in its tracks.
-              </p>
-              <div class="pillar-impact">
-                Ocular Impact: Preserves natural vision and halts early cataract onset.
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon"><i data-lucide="droplets"></i></div>
-              <h4 class="pillar-title">4. Solar Desalination & Potable Water Hubs</h4>
-              <p class="pillar-text">
-                Installing localized solar-powered reverse osmosis (RO) drinking water kiosks and insulated water transport tankers that deliver 20 liters of cold, mineralized potable water directly to worker shacks across remote rann expanses.
-              </p>
-              <div class="pillar-impact">
-                Welfare Impact: Complete elimination of dehydration-induced kidney failure.
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon"><i data-lucide="bus"></i></div>
-              <h4 class="pillar-title">5. Mobile 'Rann Shalas' & Tele-Clinics</h4>
-              <p class="pillar-text">
-                Deploying mobile tent classrooms (<em>Rann Shalas</em>) equipped with digital learning tablets and solar power to ensure children never drop out during the 8-month salt cycle, alongside specialized <em>Sanjeevani</em> medical vans providing dermatological and podiatric care.
-              </p>
-              <div class="pillar-impact">
-                Generational Impact: Zero school dropouts and continuous child education.
-              </div>
-            </div>
-
-            <div class="pillar-card">
-              <div class="pillar-icon"><i data-lucide="scale"></i></div>
-              <h4 class="pillar-title">6. Direct Fair-Trade Producer Cooperatives</h4>
-              <p class="pillar-text">
-                Organizing salt farmers into democratic producer cooperatives with direct institutional tie-ups to public distribution systems and FMCG companies. Eliminating exploitative middlemen guarantees a transparent minimum floor price for raw crystal salt.
-              </p>
-              <div class="pillar-impact">
-                Economic Impact: Triples the per-ton price received by grassroots producers.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 5: Quality Science -->
-    <section class="section" id="quality-science">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge">Quality Optimization & Circular Economy</div>
-          <h2 class="section-title">Engineering the Best Quality Salt & Valuable By-Products</h2>
-          <p class="section-subtitle">
-            How optimizing the chemical evaporation sequence simultaneously protects workers from hazardous bittern and produces medical-grade sodium chloride, gourmet artisanal salts, and valuable industrial minerals.
-          </p>
-        </div>
-
-        <div class="quality-grid">
-          <div class="quality-card">
-            <div class="section-badge">Chemical Purity</div>
-            <h3>Optimized Purity Protocol</h3>
-            <ul class="quality-list">
-              <li class="quality-item">
-                <span class="quality-icon"><i data-lucide="check"></i></span>
-                <div>
-                  <strong>Automated Baumé Cutoff Sensors:</strong>
-                  Continuous digital density sensors alert operators the exact moment brine hits 29.5° Bé, ensuring bittern is drained automatically so workers never have to wade into hazardous caustic mother liquor.
-                </div>
-              </li>
-              <li class="quality-item">
-                <span class="quality-icon"><i data-lucide="check"></i></span>
-                <div>
-                  <strong>Microplastic Multi-Stage Filtration:</strong>
-                  Intake seawater passes through natural bio-sand filters and micro-mesh screens before reaching crystallizers, guaranteeing 100% microplastic-free table salt for human consumption.
-                </div>
-              </li>
-              <li class="quality-item">
-                <span class="quality-icon"><i data-lucide="check"></i></span>
-                <div>
-                  <strong>Enclosed Solar Tunnel Drying:</strong>
-                  Transitioning from open ground drying to enclosed solar tunnel dryers prevents airborne windblown dust, road soot, and bird droppings from contaminating crystalline salt.
-                </div>
-              </li>
-              <li class="quality-item">
-                <span class="quality-icon"><i data-lucide="check"></i></span>
-                <div>
-                  <strong>Codex & FSSAI Conformance:</strong>
-                  Guarantees >99.4% NaCl purity on dry basis, water insoluble matter <0.1%, and exact 30 ppm Potassium Iodate fortification for cognitive health.
-                </div>
-              </li>
+          <div class="footer-col">
+            <h4>Explore</h4>
+            <ul class="footer-links">
+              <li><a href="#map-explorer">Satellite map</a></li>
+              <li><a href="#crystallizer-3d">Real 3D sites</a></li>
+              <li><a href="#the-process">Fractional crystallization</a></li>
+              <li><a href="#salt-registry">Pan registry</a></li>
             </ul>
           </div>
 
-          <div class="quality-card">
-            <div class="section-badge pink">Circular Economy</div>
-            <h3>Valorization of Bittern By-Products</h3>
-            <ul class="quality-list">
-              <li class="quality-item">
-                <span class="quality-icon" style="color: var(--accent-pink);"><i data-lucide="sparkles"></i></span>
-                <div>
-                  <strong>Magnesium Hydroxide & Epsom Salts:</strong>
-                  Treating drained bittern with lime yields Magnesium Hydroxide Mg(OH)₂ used in pharmaceuticals (antacids) and flame retardants, converting hazardous waste into high-value revenue.
-                </div>
+          <div class="footer-col">
+            <h4>Humanitarian mission</h4>
+            <ul class="footer-links">
+              <li><a href="#humanitarian">The Agariya crisis</a></li>
+              <li><a href="#humanitarian">Solar brine pumps</a></li>
+              <li><a href="#humanitarian">Protective gear</a></li>
+              <li><a href="#humanitarian">Fair-trade cooperatives</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Sources we used</h4>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="https://saltcomindia.gov.in"
+                  target="_blank"
+                  rel="noopener"
+                  >Salt Commissioner's Organisation</a
+                >
               </li>
-              <li class="quality-item">
-                <span class="quality-icon" style="color: var(--accent-pink);"><i data-lucide="sparkles"></i></span>
-                <div>
-                  <strong>Bromine Extraction:</strong>
-                  India’s salt bitterns are rich in bromine ions (up to 2,500 ppm), supplying vital raw materials for agrochemicals, pharmaceuticals, and energy storage batteries.
-                </div>
+              <li>
+                <a href="https://csmcri.res.in" target="_blank" rel="noopener"
+                  >CSIR–CSMCRI Bhavnagar</a
+                >
               </li>
-              <li class="quality-item">
-                <span class="quality-icon" style="color: var(--accent-pink);"><i data-lucide="sparkles"></i></span>
-                <div>
-                  <strong>Potash (SOP) Fertilizer:</strong>
-                  Recovering potassium salts from mixed salt bittern fractions provides organic Sulphate of Potash (K₂SO₄) for Indian farmers, reducing reliance on expensive imported fertilizers.
-                </div>
+              <li>
+                <a href="https://www.nrsc.gov.in" target="_blank" rel="noopener"
+                  >NRSC / ISRO Salt Pan Atlas</a
+                >
               </li>
-              <li class="quality-item">
-                <span class="quality-icon" style="color: var(--accent-pink);"><i data-lucide="sparkles"></i></span>
-                <div>
-                  <strong>Artisanal Gourmet Salt Branding:</strong>
-                  Marketing delicate surface crystals as "Fleur de Sel" and large desert cubic crystals as "Kutch Baragara Salt" commands 10x the price of generic bulk salt, funding community worker welfare trusts.
-                </div>
+              <li>
+                <a href="https://ibm.gov.in" target="_blank" rel="noopener"
+                  >Indian Bureau of Mines</a
+                >
               </li>
             </ul>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- SECTION 6: The Full Registry -->
-    <section class="section alt-bg" id="salt-registry">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-badge">Compiled directory</div>
-          <h2 class="section-title">Registry of Indian salt pans</h2>
-          <p class="section-subtitle">
-            Search and inspect sites we assembled from public records. Each card links to sources. Production numbers are whoever published them — not figures we invented, and not an official government roster.
-          </p>
-        </div>
-
-        <div class="registry-toolbar">
-          <div class="results-count" id="results-count">
-            Loading verified salt pan records...
+        <div class="footer-bottom">
+          <div>
+            &copy; 2026 LAVANA student team. Independent humanitarian project.
+            Dedicated to India's salt pan workers.
           </div>
-
-          <div style="display: flex; gap: 0.75rem;">
-            <button class="btn btn-glass" style="font-size: 0.85rem; padding: 0.5rem 1rem;" onclick="window.app.exportGeoJSON()">
-              <i data-lucide="download"></i> Export GeoJSON
-            </button>
-            <button class="btn btn-primary" style="font-size: 0.85rem; padding: 0.5rem 1rem;" onclick="window.app.exportCSV()">
-              <i data-lucide="table"></i> Export CSV
-            </button>
-          </div>
-        </div>
-
-        <div class="pans-grid" id="pans-grid">
-          <!-- Dynamically populated by js/app.js -->
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION 7: Data Export & Research Suite -->
-    <section class="section" id="data-export">
-      <div class="container">
-        <div class="export-card">
-          <div class="export-info">
-            <div class="section-badge">Open data, cited</div>
-            <h3 style="font-size: 1.8rem; margin-bottom: 0.75rem; color: var(--text-main);">Download the dataset we compiled</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
-              Students built this independently for humanitarian use. Coordinates use WGS84 (EPSG:4326). We drew on published material from the Salt Commissioner's Organisation (SCO), CSIR–CSMCRI Bhavnagar, NRSC / ISRO Salt Pan Atlas, Indian Bureau of Mines (IBM) yearbooks, journalism (including PARI), and academic papers — each record names its source and credit remains with the original authors.
-            </p>
-          </div>
-          <div class="export-actions">
-            <button class="btn btn-primary" onclick="window.app.exportGeoJSON()">
-              <i data-lucide="globe"></i> Download GeoJSON
-            </button>
-            <button class="btn btn-pink" onclick="window.app.exportCSV()">
-              <i data-lucide="file-text"></i> Download CSV
-            </button>
+          <div style="display: flex; gap: 1.5rem">
+            <a href="#hero">Back to top</a>
+            <a href="#data-export">Compiled data: cite original authors</a>
           </div>
         </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <!-- Detailed Dossier Modal -->
-  <div class="modal-overlay" id="dossier-modal">
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <div class="modal-title-group">
-          <div class="modal-badges">
-            <span class="pan-id-tag" id="modal-pan-id">IN-GJ-001</span>
-            <span class="pan-status-tag active" id="modal-pan-status">Active</span>
-          </div>
-          <h3 class="modal-title" id="modal-pan-name">Little Rann of Kutch Salt Pans</h3>
-          <div class="modal-subtitle" id="modal-pan-loc">Surendranagar, Gujarat</div>
-        </div>
-        <button class="modal-close-btn" id="modal-close" aria-label="Close modal">
-          <i data-lucide="x"></i>
-        </button>
-      </div>
+    <button
+      class="back-to-top"
+      id="back-to-top"
+      type="button"
+      aria-label="Back to top"
+      hidden
+    >
+      <i data-lucide="arrow-up"></i>
+    </button>
+    <noscript
+      ><div class="noscript-message">
+        Enable JavaScript to explore the interactive maps and registry.
+        <a href="india_salt_pans_gis.csv" download
+          >Download the original dataset</a
+        >.
+      </div></noscript
+    >
+    <!-- Scripts -->
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/lucide@0.469.0"></script>
 
-      <div class="modal-tabs">
-        <button class="modal-tab active" data-tab="geo"><i data-lucide="map-pin"></i> Place</button>
-        <button class="modal-tab" data-tab="ops"><i data-lucide="factory"></i> Operations</button>
-        <button class="modal-tab" data-tab="worker"><i data-lucide="heart-handshake"></i> Workers</button>
-        <button class="modal-tab" data-tab="eco"><i data-lucide="leaf"></i> Ecology</button>
-        <button class="modal-tab" data-tab="history"><i data-lucide="landmark"></i> Heritage</button>
-        <button class="modal-tab" data-tab="sources"><i data-lucide="book-open"></i> Sources</button>
-      </div>
-
-      <div class="modal-body">
-        <div class="modal-tab-content active" id="tab-geo">
-          <div id="tab-geo-content"></div>
-        </div>
-
-        <div class="modal-tab-content" id="tab-ops">
-          <div id="tab-ops-content"></div>
-        </div>
-
-        <div class="modal-tab-content" id="tab-worker">
-          <div id="tab-worker-content"></div>
-        </div>
-
-        <div class="modal-tab-content" id="tab-eco">
-          <div id="tab-eco-content"></div>
-        </div>
-
-        <div class="modal-tab-content" id="tab-history">
-          <div id="tab-history-content"></div>
-        </div>
-
-        <div class="modal-tab-content" id="tab-sources">
-          <div id="tab-sources-content"></div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button class="btn btn-glass" onclick="window.app.closeDossier()">Close</button>
-        <div style="display: flex; gap: 0.5rem;">
-          <button class="btn btn-primary" onclick="window.app.launch3D(window.app.selectedPan?.id); window.app.closeDossier();">
-            <i data-lucide="mountain"></i> Open in 3D
-          </button>
-          <button class="btn btn-pink" onclick="window.app.focusOnMap(window.app.selectedPan?.id); window.app.closeDossier();">
-            <i data-lucide="map"></i> View on map
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="#hero" class="brand" style="margin-bottom: 0.5rem;">
-            <div class="brand-icon">NaCl</div>
-            <div class="brand-title">LAVANA <span>(लवण)</span></div>
-          </a>
-          <p class="footer-brand-desc">
-            Built by students, for humanitarian use. We map salt pans, cite public data, and work toward better conditions for Agariya and Uppalam workers.
-          </p>
-        </div>
-
-        <div class="footer-col">
-          <h4>Explore</h4>
-          <ul class="footer-links">
-            <li><a href="#map-explorer">Satellite map</a></li>
-            <li><a href="#crystallizer-3d">Real 3D sites</a></li>
-            <li><a href="#the-process">Fractional crystallization</a></li>
-            <li><a href="#salt-registry">Pan registry</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Humanitarian mission</h4>
-          <ul class="footer-links">
-            <li><a href="#humanitarian">The Agariya crisis</a></li>
-            <li><a href="#humanitarian">Solar brine pumps</a></li>
-            <li><a href="#humanitarian">Protective gear</a></li>
-            <li><a href="#humanitarian">Fair-trade cooperatives</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Sources we used</h4>
-          <ul class="footer-links">
-            <li><a href="https://saltcomindia.gov.in" target="_blank" rel="noopener">Salt Commissioner's Organisation</a></li>
-            <li><a href="https://csmcri.res.in" target="_blank" rel="noopener">CSIR–CSMCRI Bhavnagar</a></li>
-            <li><a href="https://www.nrsc.gov.in" target="_blank" rel="noopener">NRSC / ISRO Salt Pan Atlas</a></li>
-            <li><a href="https://ibm.gov.in" target="_blank" rel="noopener">Indian Bureau of Mines</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 LAVANA student team. Independent humanitarian project. Dedicated to India's salt pan workers.</div>
-        <div style="display: flex; gap: 1.5rem;">
-          <a href="#hero">Back to top</a>
-          <a href="#data-export">Compiled data: cite original authors</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
-  <script src="https://unpkg.com/lucide@0.469.0"></script>
-
-  <!-- Embedded fallback data for seamless offline / file:// protocol loading -->
-  <script src="js/fallback_data.js"></script>
-  <!-- Modules -->
-  <script src="js/three-crystallizer.js"></script>
-  <script src="js/map.js"></script>
-  <script src="js/app.js"></script>
-</body>
+    <!-- Embedded fallback data for seamless offline / file:// protocol loading -->
+    <script src="js/fallback_data.js"></script>
+    <!-- Modules -->
+    <script src="js/three-crystallizer.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/ui.js"></script>
+  </body>
 </html>
