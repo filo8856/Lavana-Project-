@@ -199,7 +199,9 @@ class SaltPanMap {
     if (this.markersLayer.getLayers().length > 0) {
       const group = new L.featureGroup(this.markersLayer.getLayers());
       this.map.flyToBounds(group.getBounds().pad(0.1), {
-        duration: 1.0,
+        duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+          ? 0
+          : 1,
       });
     }
   }

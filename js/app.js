@@ -153,6 +153,18 @@ class LavanaApp {
               : val <= 29.5
                 ? "crystal"
                 : "bittern";
+    const phase = badgeEl?.dataset.phase;
+    const currentStep = document.querySelector(
+      `.process-step[data-phase="${phase}"]`,
+    );
+    document.querySelectorAll(".process-step").forEach((step) => {
+      step.dataset.current = String(step === currentStep);
+    });
+    if (currentStep && this.currentProcessStep !== currentStep) {
+      if (this.currentProcessStep) this.currentProcessStep.open = false;
+      currentStep.open = true;
+      this.currentProcessStep = currentStep;
+    }
 
     if (numEl) numEl.innerText = val.toFixed(1);
 
@@ -163,8 +175,6 @@ class LavanaApp {
           "Raw seawater/brine (35 g/L). Silt, sand, and organic suspended solids settle by gravity.";
       if (badgeEl) {
         badgeEl.innerText = "Intake Brine";
-        badgeEl.style.background = "rgba(14, 165, 233, 0.2)";
-        badgeEl.style.color = "#38bdf8";
       }
     } else if (val < 15.0) {
       if (phaseEl) phaseEl.innerText = "First Condenser Stage";
@@ -173,8 +183,6 @@ class LavanaApp {
           "Precipitation of Ferric Oxide (Fe₂O₃) and Calcium Carbonate (CaCO₃ / Chalk). Brine clarifies.";
       if (badgeEl) {
         badgeEl.innerText = "Carbonate Settling";
-        badgeEl.style.background = "rgba(20, 184, 166, 0.2)";
-        badgeEl.style.color = "#2dd4bf";
       }
     } else if (val < 25.0) {
       if (phaseEl) phaseEl.innerText = "Gypsum Condensation Pans";
@@ -183,8 +191,6 @@ class LavanaApp {
           "Heavy crystallization of Calcium Sulfate dihydrate (Gypsum: CaSO₄·2H₂O). Over 85% of total gypsum precipitates.";
       if (badgeEl) {
         badgeEl.innerText = "Gypsum Trap";
-        badgeEl.style.background = "rgba(202, 138, 4, 0.2)";
-        badgeEl.style.color = "#facc15";
       }
     } else if (val <= 29.5) {
       if (phaseEl) phaseEl.innerText = "NaCl Crystallizer Pan (Peak Purity)";
@@ -193,8 +199,6 @@ class LavanaApp {
           "Optimum Sodium Chloride (NaCl) crystallization! Halophile microalgae Dunaliella salina creates vivid pink hue. Harvest >99.4% purity.";
       if (badgeEl) {
         badgeEl.innerText = "Prime Food-Grade Salt";
-        badgeEl.style.background = "rgba(255, 77, 141, 0.25)";
-        badgeEl.style.color = "#ff4d8d";
       }
     } else {
       if (phaseEl) phaseEl.innerText = "Bittern Liquor Zone (Caution!)";
@@ -203,8 +207,6 @@ class LavanaApp {
           "Hazardous over-concentration! Bitter Magnesium Sulfate (MgSO₄), Magnesium Chloride (MgCl₂), and Bromine begin depositing. Bittern must be discharged!";
       if (badgeEl) {
         badgeEl.innerText = "Bittern Liquor (Non-Edible)";
-        badgeEl.style.background = "rgba(239, 68, 68, 0.25)";
-        badgeEl.style.color = "#f87171";
       }
     }
   }
@@ -228,6 +230,17 @@ class LavanaApp {
     document
       .getElementById("reset-filters")
       ?.addEventListener("click", () => this.resetFilters());
+    document.querySelectorAll("[data-reset-filters]").forEach((button) => {
+      button.addEventListener("click", () => this.resetFilters());
+    });
+    document.querySelectorAll("[data-map-search]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const search = document.getElementById("map-search");
+        search.value = button.dataset.mapSearch;
+        search.dispatchEvent(new Event("input", { bubbles: true }));
+        this.mapInstance?.fitAll();
+      });
+    });
     document
       .getElementById("active-filters")
       ?.addEventListener("click", (event) => {
@@ -500,7 +513,7 @@ class LavanaApp {
             ${pan.ramsar ? '<span class="badge-pill badge-ramsar">Ramsar wetland</span>' : ""}
             ${pan.protected_area ? `<span class="badge-pill badge-heritage">Protected zone</span>` : ""}
             ${pan.state === "Rajasthan" ? '<span class="badge-pill badge-lake">Inland playa / lake</span>' : ""}
-            ${pan.state === "Gujarat" ? '<span class="badge-pill" style="background: rgba(0, 240, 255, 0.15); color: #00f0ff;">Solar subsoil / marine</span>' : ""}
+            ${pan.state === "Gujarat" ? '<span class="badge-pill">Solar subsoil / marine</span>' : ""}
           </div>
 
           <div class="pan-card-actions">
@@ -510,7 +523,7 @@ class LavanaApp {
             <button class="pan-action-btn btn-view-3d" onclick="window.app.launch3D('${pan.id}')">
               <i data-lucide="mountain"></i> 3D site
             </button>
-            <button class="pan-action-btn" style="background: rgba(255,255,255,0.06); color: #fff;" onclick="window.app.focusOnMap('${pan.id}')" title="Locate on map">
+            <button class="pan-action-btn" onclick="window.app.focusOnMap('${pan.id}')" title="Locate on map">
               <i data-lucide="map-pin"></i>
             </button>
           </div>
@@ -632,9 +645,9 @@ class LavanaApp {
           <div class="dossier-card-sub">Accuracy: Verified Ground / Satellite Coords</div>
         </div>
       </div>
-      <div class="dossier-card" style="margin-top: 1rem;">
+      <div class="dossier-card">
         <div class="dossier-card-title">Site Physical Description</div>
-        <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.6;">${pan.description}</p>
+        <p>${pan.description}</p>
       </div>
     `;
 
@@ -668,8 +681,8 @@ class LavanaApp {
     const workerIssuesList = (pan.worker_issues || [])
       .map(
         (issue) => `
-      <li style="margin-bottom: 0.75rem; display: flex; align-items: flex-start; gap: 0.6rem; color: #cbd5e1; font-size: 0.9rem;">
-        <span style="color: var(--accent-pink); line-height: 1;"><i data-lucide="triangle-alert"></i></span>
+      <li>
+        <span><i data-lucide="triangle-alert"></i></span>
         <span>${issue}</span>
       </li>
     `,
@@ -677,20 +690,20 @@ class LavanaApp {
       .join("");
 
     document.getElementById("tab-worker-content").innerHTML = `
-      <div class="dossier-card" style="margin-bottom: 1.25rem; border-left: 4px solid var(--accent-pink);">
+      <div class="dossier-card">
         <div class="dossier-card-title">Worker Population & Community Demographics</div>
         <div class="dossier-card-val">${pan.worker_count ? pan.worker_count.toLocaleString() + " Traditional Salt Artisans & Families" : "Documented Salt Workers"}</div>
         <div class="dossier-card-sub">Communities: Agariyas, Uppalam workers, Agri, Koli, and Mithgauda families</div>
       </div>
-      <div class="dossier-card" style="margin-bottom: 1.25rem;">
+      <div class="dossier-card">
         <div class="dossier-card-title">Critical Health Hazards at This Location</div>
-        <ul style="list-style: none; padding: 0; margin-top: 0.5rem;">
+        <ul>
           ${workerIssuesList}
         </ul>
       </div>
-      <div class="dossier-card" style="border-left: 4px solid var(--accent-turquoise);">
+      <div class="dossier-card">
         <div class="dossier-card-title">Humanitarian Intervention Priority</div>
-        <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6;">
+        <p>
           Deploying solar submersible pumps to replace polluting diesel generators, provisioning customized high-durability white gumboots with dermal salves, providing UV-400 polarized ocular protection, and deploying mobile reverse-osmosis potable water trucks.
         </p>
       </div>
@@ -710,15 +723,15 @@ class LavanaApp {
           <div class="dossier-card-sub">${pan.protected_area_name || "Coastal CRZ-1 Wetland Mudflat"}</div>
         </div>
       </div>
-      <div class="dossier-card" style="margin-bottom: 1.25rem;">
+      <div class="dossier-card">
         <div class="dossier-card-title">Migratory Waterbirds & Wildlife Recorded</div>
-        <p style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.6;">
+        <p>
           ${pan.migratory_birds || pan.ecological_importance || "Key intertidal feeding habitat for flamingos, stilts, avocets, pelicans, and waders along the Central Asian Flyway."}
         </p>
       </div>
       <div class="dossier-card">
         <div class="dossier-card-title">Environmental Threats & Climate Vulnerability</div>
-        <p style="font-size: 0.92rem; color: #f87171; line-height: 1.6;">
+        <p>
           ${pan.environmental_threats || pan.climate_risk || "Susceptible to cyclone storm surges, sea-level rise, and unseasonal rainfall destroying crystallization beds."}
         </p>
       </div>
@@ -726,9 +739,9 @@ class LavanaApp {
 
     // Populate Tab 5: History & Freedom Heritage
     document.getElementById("tab-history-content").innerHTML = `
-      <div class="dossier-card" style="margin-bottom: 1.25rem; border-left: 4px solid var(--accent-amber);">
+      <div class="dossier-card">
         <div class="dossier-card-title">Historical & Cultural Heritage</div>
-        <p style="font-size: 0.95rem; color: #f1f5f9; line-height: 1.65;">
+        <p>
           ${pan.historical_importance || pan.cultural_importance || "Salt panning in this region represents centuries of indigenous water-harvesting engineering, traditional guild practices, and community resilience."}
         </p>
       </div>
@@ -746,27 +759,27 @@ class LavanaApp {
 
     // Populate Tab 6: Citations & Sources
     document.getElementById("tab-sources-content").innerHTML = `
-      <div class="dossier-card" style="margin-bottom: 1rem;">
+      <div class="dossier-card">
         <div class="dossier-card-title">Sources we compiled (cited)</div>
-        <ul style="list-style: none; padding: 0; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.75rem;">
-          <li style="font-size: 0.88rem; color: #cbd5e1;">
+        <ul>
+          <li>
             <strong>Primary published source:</strong> ${pan.primary_source || "Salt Commissioner's Organisation (public reports; we are not affiliated)"}
-            ${pan.source_url ? `<br><a href="${pan.source_url}" target="_blank" rel="noopener" style="color: var(--accent-cyan); word-break: break-all;">${pan.source_url}</a>` : ""}
+            ${pan.source_url ? `<br><a href="${pan.source_url}" target="_blank" rel="noopener">${pan.source_url}</a>` : ""}
           </li>
           ${
             pan.academic_source
               ? `
-            <li style="font-size: 0.88rem; color: #cbd5e1;">
+            <li>
               <strong>Academic / journalism:</strong> ${pan.academic_source}
-              ${pan.academic_url ? `<br><a href="${pan.academic_url}" target="_blank" rel="noopener" style="color: var(--accent-cyan); word-break: break-all;">${pan.academic_url}</a>` : ""}
+              ${pan.academic_url ? `<br><a href="${pan.academic_url}" target="_blank" rel="noopener">${pan.academic_url}</a>` : ""}
             </li>
           `
               : ""
           }
-          <li style="font-size: 0.88rem; color: #cbd5e1;">
+          <li>
             <strong>Remote sensing used for context:</strong> NRSC / ISRO Salt Pan Atlas of India (Cartosat observations). We did not produce these satellites.
           </li>
-          <li style="font-size: 0.88rem; color: #cbd5e1;">
+          <li>
             <strong>Compilation:</strong> Assembled by students for this humanitarian atlas. Please cite the original authors above, not a government portal.
           </li>
         </ul>
