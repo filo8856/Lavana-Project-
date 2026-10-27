@@ -25,24 +25,24 @@ Open <http://127.0.0.1:8000>. Map imagery, terrain, fonts, and the CDN libraries
 
 ## Design system
 
-The visual direction follows salt-pan geometry and the contrast between water and mineral: a panoramic landscape, an uncluttered map workspace, and readable science and welfare sections.
+The visual direction follows the colors of salt landscapes: a photograph-led cover, deep lagoon navigation and satellite workspace, brine-pink science, and warm mineral colors around the worker story. Reading surfaces stay lighter within these colored sections.
 
-| Token       | Value     | Use                             |
-| ----------- | --------- | ------------------------------- |
-| Salt white  | `#F5F8FA` | Page canvas                     |
-| Mineral ink | `#172E43` | Primary text                    |
-| Cobalt      | `#335CBB` | Actions and selected controls   |
-| Sea glass   | `#E5F1F3` | Interactive science and quality |
-| Brine rose  | `#E5C6D0` | Supporting welfare palette      |
-| Slate       | `#53687A` | Secondary text                  |
+| Token        | Value     | Use                             |
+| ------------ | --------- | ------------------------------- |
+| Deep lagoon  | `#173F4C` | Navigation, cover, 3D workspace |
+| Mineral sand | `#E8D7C8` | Map exploration section         |
+| Brine pink   | `#EDD1DC` | Crystallization science         |
+| Warm peach   | `#F0C9A0` | Cover actions and statistics    |
+| Plum         | `#603C4E` | Worker testimony                |
+| Teal         | `#206B75` | Actions on light surfaces       |
 
 Sora is used throughout, with deliberate size and weight differences for headings, body copy, and controls. The CSS begins with shared tokens, followed by components and responsive rules. Put presentation in component classes instead of inline styles. Animations are limited to the cover entrance and user-triggered disclosures; reduced-motion preferences are respected.
 
 The layout uses three distinct patterns:
 
 ```text
-Cover:       [ heading                 supporting copy + actions ]
-             [                 panoramic landscape               ]
+Cover:       [ heading + actions over a full landscape photograph ]
+             [             deep lagoon statistics band            ]
 Atlas:       [ filter rail ][             interactive map        ]
 Science:     [ live slider ][              process stages        ]
 ```

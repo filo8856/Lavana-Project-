@@ -1,19 +1,19 @@
 /* LAVANA | Mineral, water, and the geometry of salt pans.
    Tokens → foundations → components → responsive layouts → motion/print. */
 :root {
-  --canvas: #f5f8fa;
-  --surface: #fff;
-  --surface-soft: #edf3f6;
-  --ink: #172e43;
-  --muted: #53687a;
-  --line: #d9e3ea;
-  --blue: #335cbb;
-  --blue-hover: #264a9b;
-  --blue-soft: #eaf0fd;
-  --sea: #e5f1f3;
-  --sea-ink: #286873;
-  --rose: #e5c6d0;
-  --rose-soft: #f6edf1;
+  --canvas: #f3e6da;
+  --surface: #fffaf3;
+  --surface-soft: #e8d7c8;
+  --ink: #193945;
+  --muted: #485660;
+  --line: #d7cfc3;
+  --primary: #206b75;
+  --primary-hover: #15515c;
+  --primary-soft: #e2eeec;
+  --sea: #d0e4e3;
+  --sea-ink: #215a65;
+  --rose: #e8baca;
+  --rose-soft: #f0d5df;
   --radius-control: 9px;
   --radius-card: 16px;
   --radius-panel: 24px;
@@ -37,8 +37,8 @@
   --text-main: var(--ink);
   --text-muted: var(--muted);
   --text-dim: var(--muted);
-  --accent-cyan: var(--blue);
-  --accent-cyan-dark: var(--blue-hover);
+  --accent-cyan: var(--primary);
+  --accent-cyan-dark: var(--primary-hover);
   --accent-turquoise: var(--sea-ink);
   --accent-pink: #9b526b;
   --accent-rose: #9b526b;
@@ -46,6 +46,11 @@
   --accent-purple: #6c5f9a;
   --border-subtle: var(--line);
   --border-glow: #a2b8e0;
+  --lagoon: #173f4c;
+  --sand: #ebd3b9;
+  --brine: #edd1dc;
+  --plum: #603c4e;
+  --peach: #f0c9a0;
 }
 *,
 *::before,
@@ -118,7 +123,7 @@ body.modal-open {
   overflow: hidden;
 }
 :focus-visible {
-  outline: 3px solid var(--blue);
+  outline: 3px solid var(--primary);
   outline-offset: 4px;
 }
 #main-content:focus {
@@ -160,7 +165,7 @@ svg.lucide {
   left: 14px;
   z-index: 4000;
   background: var(--surface);
-  border: 1px solid var(--blue);
+  border: 1px solid var(--primary);
   border-radius: var(--radius-control);
   padding: 12px 20px;
 }
@@ -187,12 +192,12 @@ svg.lucide {
   text-align: center;
 }
 .btn-primary {
-  background: var(--blue);
+  background: var(--primary);
   color: #fff;
   box-shadow: 0 3px 7px #335cbb18;
 }
 .btn-primary:hover {
-  background: var(--blue-hover);
+  background: var(--primary-hover);
 }
 .btn-outline,
 .btn-glass {
@@ -215,18 +220,18 @@ svg.lucide {
 }
 .btn-text {
   background: transparent;
-  color: var(--blue);
+  color: var(--primary);
   padding-inline: 10px;
 }
 .btn-text:hover {
-  background: var(--blue-soft);
+  background: var(--primary-soft);
 }
 /* Navigation */
 .top-ticker {
-  background: var(--surface-soft);
-  border-bottom: 1px solid var(--line);
+  background: #12343f;
+  border-bottom: 1px solid #ffffff16;
   font-size: 10px;
-  color: var(--muted);
+  color: #c6dcde;
 }
 .top-ticker > .container {
   display: flex;
@@ -244,15 +249,15 @@ svg.lucide {
 }
 .ticker-badge {
   font-weight: 600;
-  color: var(--ink);
+  color: #f0c9a0;
 }
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: #f5f8faf0;
+  background: #173f4cf5;
   backdrop-filter: blur(18px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid #ffffff1a;
 }
 .nav-inner {
   display: flex;
@@ -270,7 +275,7 @@ svg.lucide {
 .brand-icon {
   width: 39px;
   height: 42px;
-  color: var(--blue);
+  color: #efcba7;
 }
 .brand-icon svg {
   width: 100%;
@@ -284,10 +289,11 @@ svg.lucide {
   line-height: 1.3;
   font-weight: 600;
   letter-spacing: -0.055em;
+  color: #fff6e9;
 }
 .brand-title span {
   font-size: 16px;
-  color: var(--muted);
+  color: #c0d8dc;
   font-weight: 400;
   margin-left: 5px;
   letter-spacing: 0;
@@ -295,7 +301,7 @@ svg.lucide {
 .brand-tag {
   display: block;
   font-size: 9px;
-  color: var(--muted);
+  color: #bdd3d7;
   line-height: 1.6;
   margin-top: 2px;
 }
@@ -313,7 +319,7 @@ svg.lucide {
   border-radius: 7px;
   font-size: 12px;
   font-weight: 450;
-  color: var(--muted);
+  color: #e0ebea;
   white-space: nowrap;
 }
 .nav-link > svg {
@@ -321,14 +327,14 @@ svg.lucide {
 }
 .nav-link:hover,
 .nav-link.active {
-  background: var(--blue-soft);
-  color: var(--blue);
+  background: #ffffff12;
+  color: #f4d3ac;
 }
 .nav-cta {
   margin-left: 15px;
   padding: 12px 18px;
-  background: var(--blue);
-  color: #fff;
+  background: #f0c9a0;
+  color: #193945;
 }
 .nav-cta > svg {
   display: block;
@@ -337,36 +343,47 @@ svg.lucide {
 }
 .nav-cta:hover,
 .nav-cta.active {
-  background: var(--blue-hover);
-  color: #fff;
+  background: #ffddb5;
+  color: #193945;
 }
 .menu-toggle {
   display: none;
 }
 /* Cover: one panoramic opening, with the content doing the work. */
 .hero {
-  padding-top: 62px;
+  padding-top: 24px;
 }
 .hero-intro {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 80px;
-  align-items: end;
-  margin-bottom: 38px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 0;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  min-height: 640px;
+  max-width: 740px;
+  padding: 72px 64px 112px;
+  pointer-events: none;
 }
 .hero h1 {
-  font-size: clamp(44px, 4.7vw, 68px);
-  line-height: 1.14;
+  font-size: clamp(54px, 6.1vw, 86px);
+  line-height: 1.1;
   font-weight: 550;
+  color: #fff8ec;
+  text-shadow: 0 3px 24px #102f3b30;
 }
 .hero-content {
-  padding-bottom: 5px;
+  padding-bottom: 0;
+  pointer-events: auto;
 }
 .hero-lead {
   max-width: 510px;
   font-size: 16px;
   line-height: 1.85;
   margin-bottom: 25px;
+  color: #e1e9e5;
 }
 .hero-actions {
   display: flex;
@@ -374,34 +391,38 @@ svg.lucide {
   gap: 12px;
 }
 .hero-visual {
-  height: 420px;
-  border-radius: var(--radius-panel);
+  height: 100%;
+  border-radius: 0;
   overflow: hidden;
-  position: relative;
+  position: absolute;
   isolation: isolate;
   background: #d3dfe5;
+  inset: 0;
+  z-index: 0;
 }
 .hero-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 57%;
+  object-position: center 55%;
   animation: cover-arrive 850ms cubic-bezier(0.2, 0.65, 0.3, 1) both;
 }
 .hero-visual::after {
   content: "";
   position: absolute;
-  inset: 40% 0 0;
-  background: linear-gradient(transparent, #193243a3);
+  inset: 0;
+  background:
+    linear-gradient(90deg, #102e3af2 0%, #102e3ac4 37%, #102e3a08 100%),
+    linear-gradient(0deg, #102e3a9c, transparent 48%);
   z-index: 0;
   pointer-events: none;
 }
 .hero-visual figcaption {
   position: absolute;
-  bottom: 26px;
-  left: 30px;
-  right: 30px;
-  z-index: 1;
+  bottom: 28px;
+  left: 32px;
+  right: 32px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -432,12 +453,14 @@ svg.lucide {
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  padding: 29px 0;
-  border-bottom: 1px solid var(--line);
+  padding: 30px 32px;
+  border-bottom: 0;
+  background: var(--lagoon);
+  border-radius: 0 0 22px 22px;
 }
 .stat-item {
   padding: 0 30px;
-  border-left: 1px solid var(--line);
+  border-left: 1px solid #ffffff26;
 }
 .stat-item:first-child {
   padding-left: 0;
@@ -449,17 +472,18 @@ svg.lucide {
   letter-spacing: -0.055em;
   line-height: 1.4;
   font-variant-numeric: tabular-nums;
+  color: #f0c9a0;
 }
 .stat-label {
   font-size: 11px;
   font-weight: 500;
-  color: var(--ink);
+  color: #f8f0e2;
   margin-top: 4px;
 }
 .stat-sub {
   font-size: 10px;
   line-height: 1.7;
-  color: var(--muted);
+  color: #c0d7d8;
   margin-top: 5px;
   max-width: 250px;
 }
@@ -476,7 +500,7 @@ svg.lucide {
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  color: var(--blue);
+  color: var(--primary);
   white-space: nowrap;
 }
 .project-note > a svg {
@@ -567,7 +591,7 @@ svg.lucide {
   margin-bottom: 2px;
 }
 .map-controls-heading svg {
-  color: var(--blue);
+  color: var(--primary);
   width: 18px;
   height: 18px;
 }
@@ -669,7 +693,7 @@ svg.lucide {
 }
 .layer-btn.active {
   background: #fff;
-  color: var(--blue);
+  color: var(--primary);
   box-shadow: 0 1px 5px #19384d12;
 }
 .fit-map {
@@ -691,13 +715,13 @@ svg.lucide {
   border: 1px solid var(--line);
   border-radius: 6px;
   background: var(--surface);
-  color: var(--blue);
+  color: var(--primary);
   padding: 5px 8px;
   font-size: 10px;
   min-height: 30px;
 }
 .map-suggestions button:hover {
-  background: var(--blue-soft);
+  background: var(--primary-soft);
   border-color: #afc4ea;
 }
 .map-controls-bar > .btn-text {
@@ -756,7 +780,7 @@ svg.lucide {
   display: inline-block;
 }
 .ind-active {
-  background: var(--blue);
+  background: var(--primary);
 }
 .ind-ramsar {
   background: #ad6d89;
@@ -783,7 +807,7 @@ svg.lucide {
   font-size: 14px;
 }
 .map-feedback a {
-  color: var(--blue);
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
@@ -798,7 +822,7 @@ svg.lucide {
 }
 .leaflet-bar a {
   background: #fff !important;
-  color: var(--blue) !important;
+  color: var(--primary) !important;
   border-bottom-color: var(--line) !important;
 }
 .leaflet-control-attribution {
@@ -922,9 +946,9 @@ svg.lucide {
   font-weight: 500;
 }
 .popup-btn-primary {
-  background: var(--blue);
+  background: var(--primary);
   color: #fff;
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 .popup-btn-3d {
   background: var(--surface-soft);
@@ -1069,8 +1093,10 @@ svg.lucide {
   top: 110px;
   border: 1px solid #c9dbe1;
   border-radius: var(--radius-panel);
-  background: var(--sea);
+  background: #234e5b;
   padding: 34px;
+  border-color: #234e5b;
+  color: #fff6eb;
 }
 .baume-header {
   display: flex;
@@ -1082,11 +1108,13 @@ svg.lucide {
   font-size: 23px;
   letter-spacing: -0.035em;
   margin-bottom: 12px;
+  color: #fff6eb;
 }
 .baume-header p {
   font-size: 13px;
   line-height: 1.85;
   max-width: 48ch;
+  color: #cadddf;
 }
 .baume-readout {
   display: flex;
@@ -1098,12 +1126,12 @@ svg.lucide {
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.07em;
-  color: #245d6d;
+  color: #f3caa7;
   font-variant-numeric: tabular-nums;
 }
 .baume-unit {
   font-size: 14px;
-  color: #375f6a;
+  color: #e0e9e5;
 }
 .baume-slider {
   width: 100%;
@@ -1126,7 +1154,7 @@ svg.lucide {
   height: 26px;
   border: 4px solid #fff;
   border-radius: 50%;
-  background: var(--blue);
+  background: var(--primary);
   box-shadow:
     0 0 0 1px #a7bbc9,
     0 3px 7px #172e4325;
@@ -1136,34 +1164,35 @@ svg.lucide {
   height: 19px;
   border: 4px solid #fff;
   border-radius: 50%;
-  background: var(--blue);
+  background: var(--primary);
 }
 .baume-state-box {
   margin-top: 32px;
   padding-top: 24px;
-  border-top: 1px solid #c5dade;
+  border-top: 1px solid #ffffff29;
 }
 .baume-phase-title {
   font-size: 14px;
   font-weight: 550;
   line-height: 1.65;
-  color: var(--ink);
+  color: #fff6eb;
 }
 .baume-phase-precipitate {
   font-size: 12px;
   line-height: 1.9;
   margin: 10px 0 20px;
-  color: #3f6170;
+  color: #d4e3e3;
 }
 .baume-quality-badge {
   display: inline-block;
   border: 1px solid #a4bdc7;
-  background: #ffffffb0;
-  color: #2f5966;
+  background: #dcebe9;
+  color: #215460;
   padding: 7px 10px;
   border-radius: 6px;
   font-size: 10px;
   font-weight: 500;
+  border-color: #b6cece;
 }
 .baume-quality-badge[data-phase="crystal"] {
   background: #f9f0f4;
@@ -1225,11 +1254,11 @@ svg.lucide {
   transform: rotate(180deg);
 }
 .process-step[data-current="true"] .step-number {
-  color: var(--blue);
+  color: var(--primary);
   font-weight: 650;
 }
 .process-step[data-current="true"] .step-title {
-  color: var(--blue);
+  color: var(--primary);
 }
 .step-desc {
   font-size: 13px;
@@ -1248,7 +1277,8 @@ svg.lucide {
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   overflow: hidden;
-  background: var(--surface);
+  background: #fff6eb;
+  border-color: #dbc7ba;
 }
 .crystal-copy {
   padding: 40px;
@@ -1275,7 +1305,7 @@ svg.lucide {
 }
 .crystal-facts strong {
   display: block;
-  color: var(--blue);
+  color: var(--primary);
   font-size: 20px;
   letter-spacing: -0.035em;
   font-weight: 500;
@@ -1299,7 +1329,7 @@ svg.lucide {
 .humanitarian-hero-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: var(--rose-soft);
+  background: var(--plum);
   border-radius: var(--radius-panel);
   overflow: hidden;
   margin-bottom: 60px;
@@ -1339,7 +1369,7 @@ svg.lucide {
   font-size: 20px;
   letter-spacing: -0.025em;
   line-height: 1.9;
-  color: #513b4a;
+  color: #fff1e2;
 }
 .hero-cta {
   margin-top: 28px;
@@ -1428,8 +1458,8 @@ svg.lucide {
   place-items: center;
   width: 35px;
   height: 35px;
-  color: var(--blue);
-  background: var(--blue-soft);
+  color: var(--primary);
+  background: var(--primary-soft);
   border-radius: 8px;
   flex-shrink: 0;
 }
@@ -1463,7 +1493,7 @@ svg.lucide {
   padding: 17px 0 20px;
   font-size: 11px;
   line-height: 1.8;
-  color: var(--blue);
+  color: var(--primary);
 }
 /* Quality panels have a different reading rhythm from the atlas cards. */
 .quality-grid {
@@ -1474,16 +1504,19 @@ svg.lucide {
 .quality-card {
   padding: 36px;
   border-radius: var(--radius-card);
-  background: var(--sea);
+  background: #24616f;
+  color: #fff8ee;
 }
 .quality-card:last-child {
-  background: var(--rose-soft);
+  background: #efc6b1;
+  color: var(--ink);
 }
 .quality-card h3 {
   font-size: 25px;
   line-height: 1.45;
   letter-spacing: -0.04em;
   margin-bottom: 28px;
+  color: #fff6e9;
 }
 .quality-list {
   list-style: none;
@@ -1492,21 +1525,21 @@ svg.lucide {
   display: flex;
   gap: 13px;
   padding: 21px 0;
-  border-top: 1px solid #172e431c;
+  border-top: 1px solid #ffffff29;
   font-size: 13px;
   line-height: 1.9;
-  color: var(--muted);
+  color: #d1e2e4;
 }
 .quality-item strong {
   display: block;
-  color: var(--ink);
+  color: #fff6e9;
   font-size: 13px;
   font-weight: 550;
   margin-bottom: 6px;
 }
 .quality-icon {
   padding-top: 3px;
-  color: var(--sea-ink);
+  color: #f4cea5;
 }
 .quality-icon svg {
   width: 16px;
@@ -1548,8 +1581,8 @@ svg.lucide {
   min-height: 34px;
   padding: 6px 10px;
   border: 1px solid #c7d6f3;
-  background: var(--blue-soft);
-  color: var(--blue);
+  background: var(--primary-soft);
+  color: var(--primary);
   border-radius: 6px;
   font-size: 10px;
 }
@@ -1602,6 +1635,8 @@ svg.lucide {
   transition:
     border-color 180ms,
     box-shadow 180ms;
+  box-shadow: 0 8px 24px #23443b09;
+  border-color: #cbd5c8;
 }
 .pan-card:hover {
   border-color: #9fb8dc;
@@ -1659,7 +1694,7 @@ svg.lucide {
 .pan-card-location {
   font-size: 11px;
   line-height: 1.75;
-  color: var(--blue);
+  color: var(--primary);
   margin-bottom: 20px;
 }
 .pan-card-desc {
@@ -1734,12 +1769,12 @@ svg.lucide {
   border: 1px solid var(--line);
   border-radius: 7px;
   background: #f7f9fc;
-  color: var(--blue);
+  color: var(--primary);
   font-size: 11px;
   font-weight: 500;
 }
 .pan-action-btn:hover {
-  background: var(--blue-soft);
+  background: var(--primary-soft);
   border-color: #acc2e9;
 }
 .pan-action-btn svg {
@@ -1750,14 +1785,14 @@ svg.lucide {
   flex: 0 0 43px;
 }
 .btn-view-dossier {
-  background: var(--blue);
+  background: var(--primary);
   color: #fff;
-  border-color: var(--blue);
+  border-color: var(--primary);
 }
 .btn-view-dossier:hover {
-  background: var(--blue-hover);
+  background: var(--primary-hover);
   color: #fff;
-  border-color: var(--blue-hover);
+  border-color: var(--primary-hover);
 }
 .registry-pagination {
   display: flex;
@@ -1795,7 +1830,7 @@ svg.lucide {
   width: 20px;
   height: 20px;
   border: 2px solid #d4e0f2;
-  border-top-color: var(--blue);
+  border-top-color: var(--primary);
   border-radius: 50%;
   animation: spin 900ms linear infinite;
   vertical-align: middle;
@@ -1877,8 +1912,8 @@ svg.lucide {
   color: var(--muted);
 }
 .modal-close-btn:hover {
-  background: var(--blue-soft);
-  color: var(--blue);
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 .modal-tabs {
   display: flex;
@@ -1907,11 +1942,11 @@ svg.lucide {
   height: 16px;
 }
 .modal-tab.active {
-  border-bottom-color: var(--blue);
-  color: var(--blue);
+  border-bottom-color: var(--primary);
+  color: var(--primary);
 }
 .modal-tab:hover {
-  background: var(--blue-soft);
+  background: var(--primary-soft);
 }
 .modal-body {
   flex: 1;
@@ -1990,7 +2025,7 @@ svg.lucide {
   margin-top: 5px;
 }
 .dossier-card a {
-  color: var(--blue);
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 3px;
   overflow-wrap: anywhere;
@@ -2022,8 +2057,8 @@ svg.lucide {
 }
 /* Open data */
 #data-export {
-  background: var(--blue-soft);
-  border-top: 1px solid #d4e0f6;
+  background: #50374e;
+  border-top: 0;
   padding-block: 75px;
 }
 .export-card {
@@ -2036,11 +2071,13 @@ svg.lucide {
   font-size: 36px;
   letter-spacing: -0.05em;
   margin-bottom: 22px;
+  color: #fff0df;
 }
 .export-info p {
   max-width: 72ch;
   font-size: 13px;
   line-height: 1.95;
+  color: #e7d9e1;
 }
 .export-actions {
   display: flex;
@@ -2055,7 +2092,7 @@ svg.lucide {
   gap: 16px;
   background: #fff;
   border: 1px solid #cbdbf5;
-  color: var(--blue);
+  color: var(--primary);
   box-shadow: none;
   border-radius: 12px;
 }
@@ -2080,7 +2117,7 @@ svg.lucide {
   margin-top: 5px;
 }
 .footer {
-  background: #172e43;
+  background: #123541;
   color: #c1ceda;
   padding: 60px 0 28px;
 }
@@ -2159,10 +2196,10 @@ svg.lucide {
   border-radius: 50%;
   background: #fffffff5;
   box-shadow: var(--shadow-float);
-  color: var(--blue);
+  color: var(--primary);
 }
 .back-to-top:hover {
-  background: var(--blue-soft);
+  background: var(--primary-soft);
 }
 .noscript-message {
   background: #f7efdd;
@@ -2174,6 +2211,124 @@ svg.lucide {
   text-decoration: underline;
 }
 /* Laptop / tablet */
+/* Landscape-led color fields give each kind of content a distinct setting. */
+.hero > .container {
+  width: min(calc(100% - 48px), 1440px);
+}
+.hero-scene {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+  background: var(--lagoon);
+}
+.hero-actions .btn-primary {
+  background: var(--peach);
+  color: #193945;
+  box-shadow: 0 4px 16px #071d2826;
+}
+.hero-actions .btn-primary:hover {
+  background: #ffdeb5;
+}
+.hero-actions .btn-outline {
+  background: #ffffff0d;
+  border-color: #ffffff70;
+  color: #fff4e6;
+  backdrop-filter: blur(8px);
+}
+.hero-actions .btn-outline:hover {
+  background: #ffffff20;
+}
+#map-explorer {
+  background: #e8d7c8;
+}
+#crystallizer-3d {
+  background: var(--lagoon);
+}
+#crystallizer-3d .section-title {
+  color: #fff3e2;
+}
+#crystallizer-3d .section-subtitle {
+  color: #d0e2e4;
+}
+#crystallizer-3d .three-toolbar {
+  background: #245360;
+  color: #fff5e8;
+}
+#crystallizer-3d .three-subtitle {
+  color: #c7dfe2;
+}
+#crystallizer-3d .three-controls-wrap .map-layer-toggles {
+  background: #173e4b;
+}
+#crystallizer-3d .layer-btn {
+  color: #d3e4e6;
+}
+#crystallizer-3d .layer-btn.active {
+  background: #efcaa5;
+  color: #193945;
+}
+#crystallizer-3d .layer-btn:hover:not(.active) {
+  background: #ffffff14;
+}
+#crystallizer-3d .custom-select {
+  background: #173e4b;
+  border-color: #668a92;
+  color: #f4efe4;
+}
+#the-process {
+  background: var(--brine);
+}
+#the-process .process-step {
+  border-color: #cfacbd;
+}
+#the-process .process-step[data-current="true"] .step-title,
+#the-process .process-step[data-current="true"] .step-number {
+  color: #823f62;
+}
+#humanitarian {
+  background: #e9d9b9;
+}
+#humanitarian .humanitarian-content .btn-primary {
+  background: #f1cba2;
+  color: #193945;
+}
+#humanitarian .hazard-item {
+  border-color: #c9bda7;
+}
+#humanitarian .step-icon-wrap {
+  background: #d9b5bd;
+  color: #623b4d;
+}
+#quality-science {
+  background: #c8dfdc;
+}
+.quality-card .section-badge {
+  color: #c8e0e1;
+}
+.quality-card:last-child h3,
+.quality-card:last-child strong {
+  color: #4b3541;
+}
+.quality-card:last-child .quality-item {
+  color: #634c4f;
+  border-color: #bf9988;
+}
+.quality-card:last-child .section-badge {
+  color: #69474d;
+}
+#salt-registry {
+  background: #dbe3d8;
+}
+.export-actions .btn {
+  background: #f5e9ed;
+  border-color: #d6bccb;
+  color: #663e55;
+}
+.export-actions .btn:hover {
+  background: #fff3f6;
+  border-color: #edcadb;
+}
 @media (max-width: 1200px) {
   .container {
     width: calc(100% - 64px);
@@ -2192,16 +2347,18 @@ svg.lucide {
     margin-left: 8px;
   }
   .hero-intro {
-    gap: 45px;
+    gap: 22px;
+    padding: 62px 48px 112px;
+    min-height: 600px;
   }
   .hero h1 {
-    font-size: 55px;
+    font-size: 65px;
   }
   .hero-lead {
     font-size: 14px;
   }
   .hero-visual {
-    height: 380px;
+    height: 100%;
   }
   .hero-stats .stat-item {
     padding-inline: 22px;
@@ -2273,10 +2430,12 @@ svg.lucide {
     gap: 10px;
     min-height: 42px;
     padding: 8px 13px;
-    background: #fff;
+    background: #ffffff0c;
     border: 1px solid var(--line);
     border-radius: var(--radius-control);
     font-size: 11px;
+    border-color: #ffffff40;
+    color: #fff3e6;
   }
   .nav-links {
     display: none;
@@ -2287,8 +2446,8 @@ svg.lucide {
     padding: 18px 32px 24px;
     grid-template-columns: 1fr 1fr;
     gap: 6px;
-    background: var(--canvas);
-    border-bottom: 1px solid var(--line);
+    background: #173f4c;
+    border-bottom: 1px solid #ffffff26;
     box-shadow: var(--shadow-panel);
   }
   .nav-links.open {
@@ -2309,10 +2468,12 @@ svg.lucide {
   }
   .hero-intro {
     grid-template-columns: 1fr 1fr;
-    gap: 35px;
+    gap: 22px;
+    max-width: 640px;
+    padding: 54px 40px 112px;
   }
   .hero h1 {
-    font-size: 45px;
+    font-size: 57px;
   }
   .hero-actions {
     gap: 9px;
@@ -2322,7 +2483,7 @@ svg.lucide {
     padding-inline: 13px;
   }
   .hero-visual {
-    height: 340px;
+    height: 100%;
   }
   .stat-number {
     font-size: 25px;
@@ -2477,22 +2638,26 @@ svg.lucide {
     padding-inline: 18px;
   }
   .hero {
-    padding-top: 32px;
+    padding-top: 16px;
   }
   .hero-intro {
     grid-template-columns: 1fr;
-    gap: 18px;
-    margin-bottom: 25px;
+    gap: 23px;
+    margin-bottom: 0;
+    padding: 42px 26px 100px;
+    max-width: none;
+    min-height: 610px;
   }
   .hero h1 {
-    font-size: clamp(37px, 9.4vw, 52px);
-    line-height: 1.2;
+    font-size: clamp(38px, 10.8vw, 55px);
+    line-height: 1.13;
     max-width: 520px;
   }
   .hero-lead {
     font-size: 14px;
-    line-height: 1.85;
+    line-height: 1.9;
     margin-bottom: 21px;
+    color: #ecede5;
   }
   .hero-content {
     padding: 0;
@@ -2506,8 +2671,8 @@ svg.lucide {
     gap: 9px;
   }
   .hero-visual {
-    height: 300px;
-    border-radius: 15px;
+    height: 100%;
+    border-radius: 0;
   }
   .hero-img {
     object-position: 48% center;
@@ -2542,7 +2707,8 @@ svg.lucide {
   .hero-stats {
     grid-template-columns: 1fr 1fr;
     gap: 24px 0;
-    padding: 26px 0;
+    padding: 26px 20px;
+    border-radius: 0 0 16px 16px;
   }
   .hero-stats .stat-item {
     padding: 0 17px;
@@ -3056,6 +3222,17 @@ svg.lucide {
     right: 17px;
     bottom: 17px;
   }
+  .hero > .container {
+    width: calc(100% - 24px);
+  }
+  .hero-visual::after {
+    background:
+      linear-gradient(90deg, #102e3ae6, #102e3a66),
+      linear-gradient(0deg, #102e3a9c, transparent 55%);
+  }
+  .hero-scene {
+    border-radius: 16px 16px 0 0;
+  }
 }
 @media (max-width: 370px) {
   .container {
@@ -3065,14 +3242,14 @@ svg.lucide {
     display: none;
   }
   .hero h1 {
-    font-size: 35px;
+    font-size: 36px;
   }
   .hero-actions .btn {
     font-size: 10px;
     padding-inline: 12px;
   }
   .hero-visual {
-    height: 275px;
+    height: 100%;
   }
   .hero-visual figcaption > span {
     font-size: 12px;
@@ -3094,6 +3271,10 @@ svg.lucide {
   .modal-actions .btn svg {
     width: 15px;
     height: 15px;
+  }
+  .hero-intro {
+    padding: 38px 22px 105px;
+    min-height: 625px;
   }
 }
 /* Animate native disclosure height where supported; other browsers use the native toggle. */
