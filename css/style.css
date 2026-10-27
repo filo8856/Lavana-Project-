@@ -710,6 +710,17 @@ svg.lucide {
   line-height: 1.8;
   margin-top: auto;
 }
+.help-touch {
+  display: none;
+}
+@media (pointer: coarse) {
+  .help-desktop {
+    display: none;
+  }
+  .help-touch {
+    display: inline;
+  }
+}
 .map-frame {
   grid-column: 2;
   position: relative;
@@ -2416,6 +2427,14 @@ svg.lucide {
 }
 /* Phone */
 @media (max-width: 700px) {
+  .map-help .help-desktop,
+  .three-instructions .help-desktop {
+    display: none;
+  }
+  .map-help .help-touch,
+  .three-instructions .help-touch {
+    display: inline;
+  }
   html {
     scroll-padding-top: 90px;
   }
@@ -2586,9 +2605,17 @@ svg.lucide {
   }
   .map-controls-heading {
     grid-column: 1/-1;
+    display: none;
   }
   .map-controls-bar > .field-search {
     grid-column: 1/-1;
+  }
+  .field-search > label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
   }
   .map-controls-bar .field-label,
   .map-controls-bar label {

@@ -159,6 +159,9 @@ class LavanaApp {
     );
     document.querySelectorAll(".process-step").forEach((step) => {
       step.dataset.current = String(step === currentStep);
+      const summary = step.querySelector("summary");
+      if (step === currentStep) summary.setAttribute("aria-current", "step");
+      else summary.removeAttribute("aria-current");
     });
     if (currentStep && this.currentProcessStep !== currentStep) {
       if (this.currentProcessStep) this.currentProcessStep.open = false;
@@ -209,6 +212,12 @@ class LavanaApp {
         badgeEl.innerText = "Bittern Liquor (Non-Edible)";
       }
     }
+    document
+      .getElementById("baume-range")
+      ?.setAttribute(
+        "aria-valuetext",
+        `${val.toFixed(1)} degrees Baumé: ${phaseEl?.textContent || ""}`,
+      );
   }
 
   initEventListeners() {
@@ -562,6 +571,7 @@ class LavanaApp {
       if (field) field.value = id === "registry-search" ? "" : "all";
     });
     this.filterPans();
+    this.mapInstance?.fitAll();
   }
 
   focusOnMap(panId) {

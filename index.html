@@ -275,7 +275,7 @@
                     class="custom-select"
                     aria-label="Filter by State"
                   >
-                    <option value="all">All States &amp; UTs (11)</option>
+                    <option value="all">All states / UTs</option>
                     <option value="Gujarat">Gujarat (11)</option>
                     <option value="Maharashtra">Maharashtra (8)</option>
                     <option value="Rajasthan">Rajasthan (6)</option>
@@ -301,7 +301,7 @@
                     class="custom-select"
                     aria-label="Filter by Status"
                   >
-                    <option value="all">All Production Statuses</option>
+                    <option value="all">All statuses</option>
                     <option value="active">Active Salt Works</option>
                     <option value="seasonal">Seasonal Salterns</option>
                     <option value="ramsar">Ramsar wetlands only</option>
@@ -361,8 +361,14 @@
                 <i data-lucide="rotate-ccw"></i> Clear filters
               </button>
               <p class="map-help">
-                Select a pin for a site dossier. Use the zoom buttons, or Ctrl /
-                ⌘ + scroll to zoom.
+                <span class="help-desktop"
+                  >Select a pin for a site dossier. Use the zoom buttons, or
+                  Ctrl / ⌘ + scroll to zoom.</span
+                >
+                <span class="help-touch"
+                  >Select a pin for details. Drag to move the map; pinch to
+                  zoom.</span
+                >
               </p>
             </div>
 
@@ -500,7 +506,13 @@
                 </div>
 
                 <div class="three-instructions">
-                  Drag to orbit · Scroll to zoom · Right-drag to pan
+                  <span class="help-desktop"
+                    >Drag to pan. Ctrl / ⌘ + scroll to zoom. Right-drag to
+                    orbit.</span
+                  >
+                  <span class="help-touch"
+                    >Use two fingers to move, zoom, or rotate the view.</span
+                  >
                 </div>
               </div>
             </div>
@@ -1173,7 +1185,7 @@
               class="custom-select"
               aria-label="Filter registry by state"
             >
-              <option value="all">All States &amp; UTs (11)</option>
+              <option value="all">All states / UTs (11)</option>
               <option value="Gujarat">Gujarat (11)</option>
               <option value="Maharashtra">Maharashtra (8)</option>
               <option value="Rajasthan">Rajasthan (6)</option>
@@ -1192,7 +1204,7 @@
               class="custom-select"
               aria-label="Filter registry by status"
             >
-              <option value="all">All Production Statuses</option>
+              <option value="all">All statuses</option>
               <option value="active">Active Salt Works</option>
               <option value="seasonal">Seasonal Salterns</option>
               <option value="ramsar">Ramsar wetlands only</option></select
